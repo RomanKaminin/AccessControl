@@ -1,0 +1,34 @@
+version: '2'
+services:
+  postgres:
+    restart: always
+    image: postgres:10.3-alpine
+    ports:
+    - 6432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: access-control
+      POSTGRES_PASSWORD: dixtrYPE
+    container_name: pgsql_access_control
+
+
+#  django_project:
+#    restart: always
+#    command: 'bash -c "python3 manage.py migrate && python3 ./manage.py migrate app &&
+#          python3 ./manage.py makemigrations app && python3 manage.py runserver 0.0.0.0:8000"'
+#    build:
+#      dockerfile: "Dockerfile"
+#      context: "./django_project"
+#    ports:
+#    - 8000:8000
+#    depends_on:
+#    - postgres
+#    container_name: restproject
+#    volumes:
+#    - /home/user/docker_data/avatars:/root/src/media
+#
+#
+
+    
+     
+

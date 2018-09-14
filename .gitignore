@@ -1,0 +1,10 @@
+.idea
+django_project/.idea
+node_modules/
+.idea/*
+*.pyc
+/.idea
+/docker-compose.yml
+/django_project/remote_expert/settings.py
+/django_project/venv/
+!/docker-compose.yml
