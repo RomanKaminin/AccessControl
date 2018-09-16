@@ -100,8 +100,8 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'access-control',
         'PASSWORD': 'dixtrYPE',
-        'HOST': '::',
-        'PORT': '6432',
+        'HOST': 'postgres',
+        'PORT': '5432',
     }
 }
 
