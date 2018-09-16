@@ -1,8 +1,8 @@
 * docker-compose build
 * docker-compose up --remove-orphans
-* python manage.py createsuperuser --email admin@example.com --username admin
+* docker-compose run --rm django_project python ./manage.py createsuperuser --email admin@example.com --username admin
 
 
-1. перед регистрацией пользователей в админке приложения необходимо создать 2 группы ('managers' и 'clients') иначе запросы не пройдут
-2. Для того чтобы пользователь мог редактировать или удалять (его через web админку нужно добавить в группу 'managers')
+1. Before start registration users create 2 Groups ('managers' и 'clients') 
+2. For delete or change  message, user must is included in the group 'managers' (from admin panel included user in 'managers')
 3. For check API use curl
