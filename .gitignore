@@ -8,3 +8,4 @@ node_modules/
 /django_project/remote_expert/settings.py
 /django_project/venv/
 !/docker-compose.yml
+/django_project/debug.log

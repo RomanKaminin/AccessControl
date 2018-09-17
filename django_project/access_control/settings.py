@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'app',
     'rest_framework_swagger',
+    'raven.contrib.django.raven_compat',
 ]
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/rest/send_request'
