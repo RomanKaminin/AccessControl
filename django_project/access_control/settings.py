@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'raven.contrib.django.raven_compat',
 ]
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/rest/send_request'
+# LOGIN_REDIRECT_URL = '/rest/send_request'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -75,7 +75,7 @@ ROOT_URLCONF = 'access_control.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates/registration')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,6 +147,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+LOGIN_REDIRECT_URL = '/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
