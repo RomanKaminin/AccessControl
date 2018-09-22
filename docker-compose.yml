@@ -6,9 +6,9 @@ services:
     ports:
     - 5432:5432
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: access-control
-      POSTGRES_PASSWORD: dixtrYPE
+      - "POSTGRES_USER=access_control"
+      - "POSTGRES_PASSWORD=access_control"
+      - "PGDATA=/data/postgres"
 
 
   django_project:

@@ -97,15 +97,14 @@ WSGI_APPLICATION = 'access_control.wsgi.application'
 # рабочий вариант
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        'USER': 'access-control',
-        'PASSWORD': 'dixtrYPE',
+        'USER': 'access_control',
+        'PASSWORD': 'access_control',
         'HOST': 'postgres',
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
