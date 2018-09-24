@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AccessControl</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="menu-container">
+  <ul class="menu">
+    {% if not user.is_authenticated %}
+    <li><a href="{% url 'login-registration' %}">Войти</a></li>
+    {% else %}
+    <li><a href="{% url 'logout-registration' %}">Выйти</a></li>
+    <li><a href="{% url 'send-request' %}">Запросить доступ</a></li>
+{#    <li><a href="{% url 'send-request' %}">Мои доступы</a></li>    #}
+{#    <li><a href="#">О проекте</a></li>#}
+    {% endif %}
+
+  </ul>
+</nav>
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
