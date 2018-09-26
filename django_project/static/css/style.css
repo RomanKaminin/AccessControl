@@ -20,7 +20,7 @@ body {
 }
 
 .menu-container {
-  background-color: #11283c;
+  background-color: #11123c;
   color: white;
   width: 15%;
   max-width: 15em;
@@ -30,6 +30,18 @@ body {
   height: 100%;
   animation-name: swipe-in;
   animation-duration: 1.0s;
+}
+.menu-container .field-home a{
+    all: initial;
+    animation-name: none;
+    all: initial;
+    text-align: center;
+    margin-left: 80px;
+}
+.menu-container .field-home a:hover:after,
+.menu-container .field-home a:active:after,
+.menu-container .field-home a:focus:after {
+    all: initial;
 }
 
 .menu-container a {
@@ -72,7 +84,7 @@ body {
   list-style-type: none;
   padding: 0;
   position: absolute;
-  top: 10%;
+  top: 15%;
   width: 100%;
   transform: translateY(-50%);
 }
@@ -166,3 +178,11 @@ article .date {
   }
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+background: linear-gradient(-45deg, transparent 315px, rgba(255, 124, 7, 0.92) 0) right, linear-gradient(45deg, transparent 315px, rgba(255, 225, 227, 0) 0) left;
+}

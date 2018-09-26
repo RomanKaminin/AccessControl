@@ -2,7 +2,8 @@
 {% load static %}
 {% block content %}
     <form method="POST" style="margin: 5% 50%;">
-        {% csrf_token %} {{ form.as_p }}
+        {% csrf_token %}
+        {{ form.as_p }}
         <button type="submit">Submit</button>
     <p>Уже зарегистрированы?<a href="#" class="regLink" tabindex="5">Войти</a></p>
     </form>

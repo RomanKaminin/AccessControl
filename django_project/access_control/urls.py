@@ -23,7 +23,7 @@ from django_project.app.views import HomePageView, register,exit
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/', include('app.api.urls')),
-    url(r'^$', HomePageView.as_view()),
+    url(r'^$', HomePageView.as_view(),name='home'),
     url(r'^login$', register, name='login-registration'),
     url(r'^logout$', exit, name='logout-registration'),
 ]

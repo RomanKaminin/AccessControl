@@ -3,7 +3,7 @@ from django import forms
 class UserRegistrationForm(forms.Form):
     username = forms.CharField(
         required = True,
-        label = 'Username',
+        label = 'Имя',
         max_length = 32
     )
     email = forms.CharField(
@@ -13,7 +13,7 @@ class UserRegistrationForm(forms.Form):
     )
     password = forms.CharField(
         required = True,
-        label = 'Password',
+        label = 'Пароль',
         max_length = 32,
         widget = forms.PasswordInput()
     )
