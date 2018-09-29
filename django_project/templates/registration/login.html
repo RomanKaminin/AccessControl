@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div id="login">
+    <h2>Вход</h2>
+        <form class="form-horizontal" name="LoginForm" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <div class="control-group">
+
+            <div class="controls">
+                <input type="text" id="username" name="username"  placeholder="Username" required>
+            </div>
+        </div>
+        <div class="control-group">
+
+            <div class="controls">
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls" style="text-align: center">
+                <button type="submit" class="btn">Войти</button>
+            </div>
+        </div>
+        </form>
+    <p>Ещё не зарегистрированы?<a href="{% url 'registration' %}" class="regLink" tabindex="5">Регистрация</a></p>
+    </div>
+{% endblock %}

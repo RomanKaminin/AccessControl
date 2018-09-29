@@ -17,3 +17,16 @@ class UserRegistrationForm(forms.Form):
         max_length = 32,
         widget = forms.PasswordInput()
     )
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField(
+        required = True,
+        label = 'Имя',
+        max_length = 32
+    )
+    password = forms.CharField(
+        required = True,
+        label = 'Пароль',
+        max_length = 32,
+        widget = forms.PasswordInput()
+    )

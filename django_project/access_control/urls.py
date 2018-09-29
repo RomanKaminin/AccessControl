@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from django_project.app.views import HomePageView, register,exit
+from django_project.app.views import HomePageView, register, exit,  login_user
 
 
 
@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/', include('app.api.urls')),
     url(r'^$', HomePageView.as_view(),name='home'),
-    url(r'^login$', register, name='login-registration'),
-    url(r'^logout$', exit, name='logout-registration'),
+    url(r'^login/$', login_user, name='login'),
+    url(r'^registration/$', register, name='registration'),
+    url(r'^logout$', exit, name='logout'),
 ]
