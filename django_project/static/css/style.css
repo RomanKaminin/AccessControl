@@ -3,7 +3,7 @@
 html {
 }
 
-body {
+html,body {
   font-family: Vollkorn, Georgia, Times, serif;
   font-size: 1.2rem;
   color: #222;
@@ -91,6 +91,10 @@ body {
   line-height: 3;
   text-align: center;
   display: block;
+}
+
+.menu li a{
+    font-size: 1.6rem;
 }
 
 .main {
@@ -204,4 +208,25 @@ background: linear-gradient(-45deg, transparent 315px, rgba(255, 124, 7, 0.92) 0
 .btn.btn-primary {
   text-align: center;
   padding: 16px 20px;
+}
+
+.field-home img{
+    /*opacity: 0;*/
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0%,0,0);
+    transform: translate3d(0%, 0px, 0px);
+
+}
+.field-home:hover img {
+    /*opacity: 2.8;*/
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0px, 0px, 0px);
+}
+
+.icon-field{
+    display: inline-block;
+    width: 44%;
+    text-align: center;
+    margin-top: 15px;
 }

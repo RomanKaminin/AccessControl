@@ -12,13 +12,13 @@
 
 <nav class="menu-container">
     <div class="field-home">
-        <a href="{% url 'home' %}"><img src="{% static "img/inc.png" %}" href="/" style=" display: inline-block; width: 30%;text-align: center;margin-top: 15px;"/></a>
+        <a href="{% url 'home' %}"><img src="{% static "img/inc.png" %}" href="/" class="icon-field" /></a>
     </div>
     <ul class="menu">
     {% if not user.is_authenticated %}
-    <li><a href="{% url 'login' %}" style="font-size: 1.6rem;" >Войти</a></li>
+    <li><a href="{% url 'login' %}">Войти</a></li>
     {% else %}
-    <li><a href="{% url 'logout' %}" style="font-size: 1.6rem;">Выйти</a></li>
+    <li><a href="{% url 'logout' %}">Выйти</a></li>
     {% endif %}
 
   </ul>
