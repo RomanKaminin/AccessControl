@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block content %}
-    <div id="registration">
-    <h2>Регистрация</h2>
+    <div id="registration" style="animation-name: fade-in;animation-duration: 2s;">
+    <h1>Регистрация</h1>
         <form class="form-horizontal" name="LoginForm" action="{% url 'registration' %}" method="post">
         {% csrf_token %}
         {% if next %}
@@ -28,10 +28,10 @@
         </div>
         <div class="control-group">
             <div class="controls" style="text-align: center">
-                <button type="submit" class="btn">Зарегистрироваться</button>
+                <button type="submit" class="btn btn-primary btn--font-weight">Зарегистрироваться</button>
             </div>
         </div>
         </form>
-    <p>Уже зарегистрированы?<a href="{% url 'login' %}" class="regLink" tabindex="5">Войти</a></p>
+    <p style="font-size: 15px;">Уже зарегистрированы?<a href="{% url 'login' %}" class="regLink" tabindex="5">Войти</a></p>
     </div>
 {% endblock %}

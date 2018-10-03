@@ -6,21 +6,19 @@
     <meta charset="UTF-8">
     <title>AccessControl</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
 </head>
 <body>
 
 <nav class="menu-container">
     <div class="field-home">
-        <a href="{% url 'home' %}"><img src="{% static "img/inc.png" %}" href="/" style=" width: 30%;text-align: center;margin-top: 15px;"/></a>
+        <a href="{% url 'home' %}"><img src="{% static "img/inc.png" %}" href="/" style=" display: inline-block; width: 30%;text-align: center;margin-top: 15px;"/></a>
     </div>
     <ul class="menu">
     {% if not user.is_authenticated %}
-    <li><a href="{% url 'login' %}">Войти</a></li>
+    <li><a href="{% url 'login' %}" style="font-size: 1.6rem;" >Войти</a></li>
     {% else %}
-    <li><a href="{% url 'logout' %}">Выйти</a></li>
-    <li><a href="{% url 'send-request' %}">Запросить доступ</a></li>
-{#    <li><a href="{% url 'send-request' %}">Мои доступы</a></li>    #}
-{#    <li><a href="#">О проекте</a></li>#}
+    <li><a href="{% url 'logout' %}" style="font-size: 1.6rem;">Выйти</a></li>
     {% endif %}
 
   </ul>
@@ -30,16 +28,3 @@
 
 </body>
 </html>
-<script type="text/javascript">
-
-{#setInterval(function () {#}
-{#        $(".img-r").css({#}
-{#              '-moz-transform':'rotate('+d+'deg)',#}
-{#              '-webkit-transform':'rotate('+d+'deg)',#}
-{#              '-o-transform':'rotate('+d+'deg)',#}
-{#              '-ms-transform':'rotate('+d+'deg)',#}
-{#              'transform': 'rotate('+d+'deg)'#}
-{#         });#}
-{##}
-{#}, 5000);#}
-</script>

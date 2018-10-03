@@ -2,18 +2,24 @@ from django.views.generic.base import TemplateView
 from .forms import UserRegistrationForm, UserLoginForm
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django import forms
 from django.contrib.auth.views import auth_login, auth_logout
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.decorators import login_required
 
 class HomePageView(TemplateView):
-    template_name = "home.html"
+    template_name = "start.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+
+@login_required
+def get_capabilitys(request):
+    return render(request, 'capability/capability.html', {})
 
 def login_user(request):
     logout(request)
@@ -26,7 +32,7 @@ def login_user(request):
             if user.is_active:
                 login(request, user)
                 auth_login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/capability')
     else:
         form = UserLoginForm()
     return render(request, 'registration/login.html', {'form' : form})
@@ -46,14 +52,14 @@ def register(request):
                 user = authenticate(username = username, password = password)
                 login(request, user)
                 auth_login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/capability')
             else:
                 raise forms.ValidationError('Looks like a username with that email already exists')
     else:
         form = UserRegistrationForm()
     return render(request, 'registration/registration.html', {'form' : form})
 
-def exit(request):
+def logout_user(request):
     auth_logout(request)
     return HttpResponseRedirect('/')
 

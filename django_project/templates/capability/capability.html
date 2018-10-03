@@ -1,0 +1,42 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AccessControl</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+
+<nav class="menu-container">
+    <div class="field-home">
+        <a href="{% url 'home' %}"><img src="{% static "img/inc.png" %}" href="/" style=" width: 30%;text-align: center;margin-top: 15px;"/></a>
+    </div>
+    <ul class="menu">
+    {% if not user.is_authenticated %}
+    <li><a href="{% url 'login' %}">Войти</a></li>
+    {% else %}
+    <li><a href="{% url 'logout' %}">Выйти</a></li>
+    {% endif %}
+
+  </ul>
+</nav>
+
+    {% block content %}
+<section class="main">
+  <article style="max-width: 200px;">
+    <h1>Ваши доступы</h1>
+      <a href="{% url 'home' %}"><img src="{% static "img/inc.png" %}" href="/capability/requests" style=" width: 10%;text-align: center;margin-top: 15px;"/></a>
+
+
+  </article>
+
+</section>
+{% endblock %}
+
+
+</body>
+</html>
