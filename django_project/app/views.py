@@ -8,6 +8,9 @@ from django import forms
 from django.contrib.auth.views import auth_login, auth_logout
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from rest_framework.exceptions import (NotAuthenticated, ParseError,
+                                       PermissionDenied)
+
 
 class HomePageView(TemplateView):
     template_name = "start.html"
@@ -25,11 +28,11 @@ def login_user(request):
     logout(request)
     if request.POST:
         form = UserLoginForm(request.POST)
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+            if user is not None and user.is_active:
                 login(request, user)
                 auth_login(request, user)
                 return HttpResponseRedirect('/capability')
@@ -47,6 +50,7 @@ def register(request):
             username = userObj['username']
             email =  userObj['email']
             password =  userObj['password']
+            #check_user_existance
             if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
                 User.objects.create_user(username, email, password)
                 user = authenticate(username = username, password = password)
@@ -58,6 +62,22 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'registration/registration.html', {'form' : form})
+
+def check_user_existance(username, email):
+    client_email = User.objects.filter(email=email).first()
+    client_username = User.objects.filter(username=username).first()
+    if (User.objects.filter(username=username, email=email).first()):
+        raise PermissionDenied(
+            detail='User already exists')
+    elif client_email or client_username:
+        if client_username:
+            raise PermissionDenied(
+                detail='This user name has already taken')
+        elif client_email:
+            raise PermissionDenied(
+                detail='This user email has already taken')
+
+
 
 def logout_user(request):
     auth_logout(request)

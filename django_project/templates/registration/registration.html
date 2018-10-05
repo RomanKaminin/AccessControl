@@ -33,5 +33,12 @@
         </div>
         </form>
     <p style="font-size: 15px;">Уже зарегистрированы?<a href="{% url 'login' %}" class="regLink" tabindex="5">Войти</a></p>
+        {% if errors %}
+    <ol>
+          {% for error in errors %}
+              <li><strong>{{ error }}</strong></li>
+          {% endfor %}
+    </ol>
+    {% endif %}
     </div>
 {% endblock %}

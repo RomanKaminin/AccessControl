@@ -112,7 +112,7 @@ article {
   text-align: left;
   max-width: 640px;
   padding: 1em;
-
+  font-size: large;
   border: 1px solid #efefef;
   border-radius: 5px;
 
@@ -182,11 +182,13 @@ article .date {
 
 html, body {
   height: 100%;
-  margin: 0;
+  /*margin: 0;*/
   padding: 0;
   display: grid;
+
 }
 body {
+
 background: linear-gradient(-45deg, transparent 315px, rgba(255, 124, 7, 0.92) 0) right, linear-gradient(45deg, transparent 315px, rgba(255, 225, 227, 0) 0) left;
 }
 #login, #registration{

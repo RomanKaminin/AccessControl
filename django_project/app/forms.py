@@ -19,10 +19,10 @@ class UserRegistrationForm(forms.Form):
     )
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField(
+    email = forms.CharField(
         required = True,
-        label = 'Имя',
-        max_length = 32
+        label = 'Email',
+        max_length = 32,
     )
     password = forms.CharField(
         required = True,
