@@ -12,7 +12,7 @@
         <div class="control-group">
 
             <div class="controls">
-                <input type="text" id="email" name="email"  placeholder="Email" required>
+                <input type="text" id="username" name="username"  placeholder="Имя" required>
             </div>
         </div>
         <div class="control-group">
@@ -30,12 +30,6 @@
     <div>
     <p style="font-size: 15px;">Ещё не зарегистрированы?<a href="{% url 'registration' %}" class="regLink" tabindex="5">Регистрация</a></p>
     </div>
-    {% if errors %}
-    <ol>
-          {% for error in errors %}
-              <li><strong>{{ error }}</strong></li>
-          {% endfor %}
-    </ol>
-    {% endif %}
+
     </div>
 {% endblock %}

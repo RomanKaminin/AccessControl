@@ -29,16 +29,18 @@ def login_user(request):
     if request.POST:
         form = UserLoginForm(request.POST)
         if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
-            user = authenticate(email=email, password=password)
-            if user is not None and user.is_active:
-                login(request, user)
-                auth_login(request, user)
-                return HttpResponseRedirect('/capability')
+            userObj = form.cleaned_data
+            username = userObj['username']
+            password = userObj['password']
+            user = authenticate(username=username, password=password)
+            if user is not None :
+                if user.is_active:
+                    login(request, user)
+                    auth_login(request, user)
+                    return HttpResponseRedirect('/capability')
     else:
         form = UserLoginForm()
-    return render(request, 'registration/login.html', {'form' : form})
+        return render(request, 'registration/login.html', {'form' : form})
 
 
 def register(request):
@@ -61,7 +63,7 @@ def register(request):
                 raise forms.ValidationError('Looks like a username with that email already exists')
     else:
         form = UserRegistrationForm()
-    return render(request, 'registration/registration.html', {'form' : form})
+        return render(request, 'registration/registration.html', {'form' : form})
 
 def check_user_existance(username, email):
     client_email = User.objects.filter(email=email).first()
