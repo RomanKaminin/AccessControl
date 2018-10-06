@@ -232,3 +232,6 @@ background: linear-gradient(-45deg, transparent 315px, rgba(255, 124, 7, 0.92) 0
     text-align: center;
     margin-top: 15px;
 }
+.control-group{
+  margin-bottom: 10px;
+}

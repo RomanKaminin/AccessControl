@@ -2,43 +2,39 @@
 {% load static %}
 
 {% block content %}
-    <div id="registration" style="animation-name: fade-in;animation-duration: 2s;">
+    <div id="registration" style="animation-name: fade-in;animation-duration: 2s; width: 27%;">
     <h1>Регистрация</h1>
         <form class="form-horizontal" name="LoginForm" action="{% url 'registration' %}" method="post">
-        {% csrf_token %}
-        {% if next %}
-            <input type="hidden" name="next" value="{{ next }}" />
-        {% endif %}
-        <div class="control-group">
-
-            <div class="controls">
-                <input type="text" id="username" name="username"  placeholder="Username">
+            {% csrf_token %}
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+            <div class="control-group">
+                {{ form.username }}
             </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <input type="text" id="email" name="email"  placeholder="Email">
+            <div class="control-group">
+                {{ form.email }}
             </div>
-        </div>
-        <div class="control-group">
-
-            <div class="controls">
-                <input type="password" name="password" id="password" placeholder="Password">
+            <div class="control-group">
+                {{ form.password }}
             </div>
-        </div>
-        <div class="control-group">
-            <div class="controls" style="text-align: center">
-                <button type="submit" class="btn btn-primary btn--font-weight">Зарегистрироваться</button>
+            <div class="control-group">
+                <div class="controls" style="text-align: center">
+                    <button type="submit" class="btn btn-primary btn--font-weight">Зарегистрироваться</button>
+                </div>
             </div>
-        </div>
+            <div style="position: fixed; text-align: center; width: 27%">
+                {% if form.non_field_errors %}
+                    <div class='form-errors'>
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
         </form>
-    <p style="font-size: 15px;">Уже зарегистрированы?<a href="{% url 'login' %}" class="regLink" tabindex="5">Войти</a></p>
-        {% if errors %}
-    <ol>
-          {% for error in errors %}
-              <li><strong>{{ error }}</strong></li>
-          {% endfor %}
-    </ol>
-    {% endif %}
+        <div style="position: fixed; text-align: center; width:  27%">
+            <p style="font-size: 15px;margin-top: 130px; ">Уже зарегистрированы?<a href="{% url 'login' %}" class="regLink" tabindex="5">Войти</a></p>
+        </div>
     </div>
 {% endblock %}

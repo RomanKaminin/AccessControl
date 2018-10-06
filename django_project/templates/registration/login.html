@@ -2,33 +2,36 @@
 {% load static %}
 
 {% block content %}
-    <div id="login" style="animation-name: fade-in;animation-duration: 2s;">
+    <div id="login" style="animation-name: fade-in;animation-duration: 2s; width: 27%;">
     <h1>Войти</h1>
         <form class="form-horizontal" name="LoginForm" action="{% url 'login' %}" method="post">
         {% csrf_token %}
-        {% if next %}
-            <input type="hidden" name="next" value="{{ next }}" />
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+            <div class="control-group">
+                {{ form.username }}
+            </div>
+            <div class="control-group">
+                {{ form.password }}
+            </div>
+            <div class="control-group">
+                <div class="controls" >
+                    <button type="submit" class="btn btn-primary btn--font-weight">Войти</button>
+                </div>
+            </div>
+        <div style="position: fixed; text-align: center; width: 27%">
+        {% if form.non_field_errors %}
+            <div class='form-errors'>
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
         {% endif %}
-        <div class="control-group">
-
-            <div class="controls">
-                <input type="text" id="username" name="username"  placeholder="Имя" required>
-            </div>
-        </div>
-        <div class="control-group">
-
-            <div class="controls">
-                <input type="password" name="password" id="password" placeholder="Password" required>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls" >
-                <button type="submit" class="btn btn-primary btn--font-weight">Войти</button>
-            </div>
         </div>
         </form>
-    <div>
-    <p style="font-size: 15px;">Ещё не зарегистрированы?<a href="{% url 'registration' %}" class="regLink" tabindex="5">Регистрация</a></p>
+    <div style="position: fixed; text-align: center; width: 27%">
+        <p style="font-size: 15px;margin-top: 130px; ">Ещё не зарегистрированы?<a href="{% url 'registration' %}" class="regLink" tabindex="5">Регистрация</a></p>
     </div>
 
     </div>
