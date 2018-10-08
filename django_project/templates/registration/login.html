@@ -10,7 +10,7 @@
                 <input type="hidden" name="next" value="{{ next }}" />
             {% endif %}
             <div class="control-group">
-                {{ form.username }}
+                {{ form.email }}
             </div>
             <div class="control-group">
                 {{ form.password }}
@@ -24,7 +24,7 @@
         {% if form.non_field_errors %}
             <div class='form-errors'>
                 {% for error in form.non_field_errors %}
-                    <p>{{ error }}</p>
+                    <p id="msg-error">{{ error }}</p>
                 {% endfor %}
             </div>
         {% endif %}
@@ -35,4 +35,27 @@
     </div>
 
     </div>
+
+
+{#    <script type="text/javascript">#}
+{#            $('#login-form').submit(function() {#}
+{##}
+{#                $.ajax({#}
+{#                    data: $(this).serialize(),#}
+{#                    type: "POST",#}
+{#                    dataType:"html",#}
+                    {#url: '/',#}
+{#                    success: function (data) {#}
+{#                         console.log(data)#}
+{##}
+{#                    },#}
+{#                    error: function(data) {#}
+{#                        console.log(JSON.parse(data)['status']);#}
+                        {#$("#msg-error").html("Something went wrong!");#}
+{#                     }#}
+{#                    });#}
+{##}
+{#                return false;#}
+{#            });#}
+{#    </script>#}
 {% endblock %}
