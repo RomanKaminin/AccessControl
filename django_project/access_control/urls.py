@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from django_project.app.views import HomePageView, get_capabilitys, \
+from django_project.app.views import HomePageView, get_accesses, \
     register, logout_user, login_user
 
 
@@ -28,5 +28,5 @@ urlpatterns = [
     url(r'^login/$', login_user, name='login'),
     url(r'^registration/$', register, name='registration'),
     url(r'^logout$', logout_user, name='logout'),
-    url(r'^capability$', get_capabilitys, name='capability'),
+    url(r'^accesses$', get_accesses, name='accesses'),
 ]

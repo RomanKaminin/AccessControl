@@ -17,8 +17,8 @@ class HomePageView(TemplateView):
 
 
 @login_required
-def get_capabilitys(request):
-    return render(request, 'capability/capability.html', {})
+def get_accesses(request):
+    return render(request, 'accesses/accesses.html', {})
 
 def login_user(request):
     logout(request)
@@ -28,7 +28,7 @@ def login_user(request):
         if user is not None :
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/capability')
+                return HttpResponseRedirect('/accesses')
     return render(request, 'registration/login.html', {'form' : form})
 
 

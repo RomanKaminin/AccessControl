@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "home.html" %}
 {% load static %}
 
 {% block content %}
@@ -36,26 +36,4 @@
 
     </div>
 
-
-{#    <script type="text/javascript">#}
-{#            $('#login-form').submit(function() {#}
-{##}
-{#                $.ajax({#}
-{#                    data: $(this).serialize(),#}
-{#                    type: "POST",#}
-{#                    dataType:"html",#}
-                    {#url: '/',#}
-{#                    success: function (data) {#}
-{#                         console.log(data)#}
-{##}
-{#                    },#}
-{#                    error: function(data) {#}
-{#                        console.log(JSON.parse(data)['status']);#}
-                        {#$("#msg-error").html("Something went wrong!");#}
-{#                     }#}
-{#                    });#}
-{##}
-{#                return false;#}
-{#            });#}
-{#    </script>#}
 {% endblock %}
