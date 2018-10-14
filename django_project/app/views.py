@@ -43,7 +43,7 @@ def register(request):
         user = authenticate(username = username, password = password)
         login(request, user)
         auth_login(request, user)
-        return HttpResponseRedirect('/capability')
+        return HttpResponseRedirect('/accesses')
     return render(request, 'registration/registration.html', {'form' : form})
 
 
