@@ -244,6 +244,6 @@ background: linear-gradient(-45deg, transparent 315px, rgba(255, 255, 255) 0) ri
     color: #fff;
 }
 .btn.btn-primary-send:hover {
-    background-color: transparent;
-    color: #ff740e;
+    /*background-color: transparent;*/
+    /*color: #ff740e;*/
 }

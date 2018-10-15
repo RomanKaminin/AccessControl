@@ -16,6 +16,11 @@ class HomePageView(TemplateView):
         return context
 
 
+
+@login_required
+def add_access(request):
+    return render(request, 'accesses/create_access.html', {})
+
 @login_required
 def get_accesses(request):
     return render(request, 'accesses/accesses.html', {})

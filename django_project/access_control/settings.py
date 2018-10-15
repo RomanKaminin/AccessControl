@@ -152,9 +152,20 @@ LOGIN_REDIRECT_URL = '/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
-RAVEN_CONFIG = {
-    'dsn': 'https://8a81a79fa5574719bb93a3cc332ca3fe:a722564bee884bafb6c88b0a8db8d5fa@sentry.io/1282087',
-}
+# Send logs to Sentry service
+SEND_LOGS_SENTRY = False
+
+if SEND_LOGS_SENTRY:
+    RAVEN_CONFIG = {
+        'dsn': 'https://8a81a79fa5574719bb93a3cc332ca3fe:a722564bee884bafb6c88b0a8db8d5fa@sentry.io/1282087',
+    }
+    handlers = ['file', 'sentry']
+else:
+    RAVEN_CONFIG = {
+        'dsn': '',
+    }
+    handlers = ['file']
+
 
 LOGGING = {
     'version': 1,
@@ -183,7 +194,7 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['sentry', 'file'],
+            'handlers': handlers,
             'level': 'INFO',
             'propagate': True,
         },
