@@ -233,3 +233,17 @@ background: linear-gradient(-45deg, transparent 315px, rgba(255, 255, 255) 0) ri
 .control-group{
   margin-bottom: 10px;
 }
+
+.btn.btn-primary-send {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 0 2px #1b073a;
+    -moz-box-shadow: inset 0 0 0 2px #1b073a;
+    -o-box-shadow: inset 0 0 0 2px #1b073a;
+    box-shadow: inset 0 0 0 2px #ff740e;
+    background-color: #ff740e;
+    color: #fff;
+}
+.btn.btn-primary-send:hover {
+    background-color: transparent;
+    color: #ff740e;
+}
