@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from app.views import HomePageView, get_accesses, \
-    register, logout_user, login_user
+from django_project.app.views import HomePageView, get_accesses, \
+    register, logout_user, login_user, add_access
 
 
 
@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^registration/$', register, name='registration'),
     url(r'^logout$', logout_user, name='logout'),
     url(r'^accesses$', get_accesses, name='accesses'),
+    url(r'^accesses/new_access$', add_access, name='new-access'),
 ]

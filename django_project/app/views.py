@@ -16,6 +16,11 @@ class HomePageView(TemplateView):
         return context
 
 
+
+@login_required
+def add_access(request):
+    return render(request, 'accesses/create_access.html', {})
+
 @login_required
 def get_accesses(request):
     user_accesses = AccessRequest.objects.filter(name=request.user.username)
@@ -44,7 +49,7 @@ def register(request):
         user = authenticate(username = username, password = password)
         login(request, user)
         auth_login(request, user)
-        return HttpResponseRedirect('/capability')
+        return HttpResponseRedirect('/accesses')
     return render(request, 'registration/registration.html', {'form' : form})
 
 

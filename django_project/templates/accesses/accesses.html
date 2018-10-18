@@ -1,29 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
-{% block content %}
-    <div class="main">
-        <div class="container" style="animation-name: fade-in;animation-duration: 2s;">
-              <div class="row admin-content">
-                    <main class="main rates">
-                        <div class="container">
-                            <div class="admin-datalist-page">
-                                <div class="view-buttons">
-                                    <a href="" class="btn btn-primary-send float-l rates__btn">Запросить доступ</a>
-                                    <a href="" class="btn btn-primary float-r btn--font-weight">Управление</a>
-                                </div>
-                                <div class="table">
-                                    <div class="row header">
-                                        <ul>
-                                            <li><a href="#0">№</a></li>
-                                            <li><a href="#0">Имя клиента</a></li>
-                                            <li><a href="#0">Цель запроса</a></li>
-                                            <li><a href="#0">Текущий доступ</a></li>
-                                            <li><a href="#0">Дата запроса</a></li>
-                                        </ul>
-                                    </div>
-                                    <div id="tableRows">
-                                        {% for access in accesses %}
+    {% block content %}
+<div class="main" style="margin-top: 10px;">
+    <div class="container" style="animation-name: fade-in;animation-duration: 2s;">
+      <div class="row admin-content">
+            <main class="main rates">
+        <div class="container">
+            <div class="admin-datalist-page">
+                <div class="view-buttons" style="margin-top: 0px;">
+                    <a class="btn btn-primary-send float-l rates__btn">Ваши доступы</a>
+                    <a style="margin-right: 0px;" href="{% url 'new-access' %}" class="btn btn-primary float-r btn--font-weight">Получить доступ</a>
+
+                </div>
+                <div class="table" style="min-height: 400px;">
+                    <div class="row header">
+                        <ul>
+                            <li><a href="#0">№</a></li>
+                            <li><a href="#0">Имя клиента</a></li>
+                            <li><a href="#0">Цель запроса</a></li>
+                            <li><a href="#0">Текущий доступ</a></li>
+                            <li><a href="#0">Дата запроса</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div id="tableRows">
+{% for access in accesses %}
                                             <div class="row">
                                                 <ul>
                                                     <li>{{ access.id }}</li>
@@ -34,13 +37,13 @@
                                                 </ul>
                                             </div>
                                         {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-              </div><!-- .row -->
-        </div><!-- .container -->
-      </div><!-- .main -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+      </div><!-- .row -->
+    </div><!-- .container -->
+  </div><!-- .main -->
 {% endblock %}
 
