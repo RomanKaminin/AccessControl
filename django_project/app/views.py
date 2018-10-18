@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.views import auth_login, auth_logout
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from app.models import AccessRequest
 
 class HomePageView(TemplateView):
     template_name = "start.html"
@@ -18,7 +18,8 @@ class HomePageView(TemplateView):
 
 @login_required
 def get_accesses(request):
-    return render(request, 'accesses/accesses.html', {})
+    user_accesses = AccessRequest.objects.filter(name=request.user.username)
+    return render(request, 'accesses/accesses.html', {'accesses' : user_accesses})
 
 def login_user(request):
     logout(request)

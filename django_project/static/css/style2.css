@@ -247,3 +247,6 @@ background: linear-gradient(-45deg, transparent 315px, rgba(255, 255, 255) 0) ri
     background-color: transparent;
     color: #ff740e;
 }
+.admin-datalist-page .table .row ul {
+    font-size: initial;
+}

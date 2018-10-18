@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from django_project.app.views import HomePageView, get_accesses, \
+from app.views import HomePageView, get_accesses, \
     register, logout_user, login_user
 
 

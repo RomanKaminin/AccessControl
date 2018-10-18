@@ -17,6 +17,7 @@ class AccessRequest(models.Model):
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=50, choices=USER_TYPE, default=u"client")
     access = models.CharField(max_length=50, choices=ACCESS_TYPE, default=u"empty")
+    date = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "AccessRequest"
