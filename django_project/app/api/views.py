@@ -6,12 +6,12 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.authentication import TokenAuthentication
 from django.http import Http404
 from rest_framework import generics, status
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import get_user_model
 from app.permissions import HasGroupPermission
-
+from django.contrib.auth import logout
 
 class SendRequest(generics.ListCreateAPIView):
     """
@@ -92,7 +92,7 @@ class CreateUserView(CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = UserSerializer
 
-    def create(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -105,7 +105,30 @@ class AuthView(APIView):
     1.Проверка аунтификации.
     """
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
         return Response({'detail': "I suppose you are authenticated"})
+
+
+class LogoutUser(ListAPIView):
+    """
+    1.Выход из системы.
+    """
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
+
+    def logout(self, *args, **kwargs):
+        instance = self.get_object()
+        instance.is_online = False
+        instance.save()
+
+    def post(self, request, *args, **kwargs):
+        self.logout()
+        return Response()
+
+    def get(self, request, *args, **kwargs):
+        self.logout()
+        return logout(request)

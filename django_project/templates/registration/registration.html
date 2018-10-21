@@ -1,10 +1,13 @@
 {% extends "home.html" %}
 {% load static %}
-
+    <script src="{% static "js/script.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% block content %}
     <div id="registration" style="animation-name: fade-in;animation-duration: 2s; width: 27%;">
     <h1>Регистрация</h1>
-        <form class="form-horizontal" name="LoginForm" action="{% url 'registration' %}" method="post">
+{#        <form class="form-horizontal" id="registration-form" name="RegistrationForm" action="{% url 'api-registration' %}" method="post">#}
+        <form class="form-horizontal" role="form" action="{% url 'registration' %}" id="myregistration-form" method="POST">
             {% csrf_token %}
             {% if next %}
                 <input type="hidden" name="next" value="{{ next }}" />
@@ -24,17 +27,41 @@
                 </div>
             </div>
             <div style="position: fixed; text-align: center; width: 27%">
-                {% if form.non_field_errors %}
-                    <div class='form-errors'>
-                        {% for error in form.non_field_errors %}
-                            <p>{{ error }}</p>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+                <div id="form-errors">
+                    <p>{{error}}</p>
+                </div>
+{#                {% if form.non_field_errors %}#}
+{#                    <div class='form-errors'>#}
+{#                        {% for error in form.non_field_errors %}#}
+{#                            <p>{{ error }}</p>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                {% endif %}#}
             </div>
         </form>
         <div style="position: fixed; text-align: center; width:  27%">
             <p style="font-size: 15px;margin-top: 130px; ">Уже зарегистрированы?<a href="{% url 'login' %}" class="regLink" tabindex="5">Войти</a></p>
         </div>
     </div>
+    <script type="text/javascript">
+
+        $('#myregistration-form').submit(function () {
+            $("#form-errors").val('');
+            var url = "{{ request.get_full_path }}";
+            $.ajax({
+                data: $(this).serialize(),
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                dataType: 'json',
+                success: function () {
+                    document.location.href = url.replace('registration/', 'accesses/');
+                },
+                error: function (data) {
+                    $("#form-errors").html(JSON.parse(data.responseText)['form']['__all__'][0]);
+                }
+            });
+            return false;
+        });
+
+    </script>
 {% endblock %}

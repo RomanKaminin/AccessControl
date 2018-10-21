@@ -9,7 +9,7 @@ router = routers.DefaultRouter()
 schema_view = get_swagger_view(title='Rest API for AccessControl')
 
 urlpatterns = [
-    url(r'^registration/$', CreateUserView.as_view()),
+    url(r'^registration/$', CreateUserView.as_view(), name='api-registration'),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^send_request/', SendRequest.as_view(), name='send-request'),
     url(r'^access/(?P<pk>[0-9]+)/$', AccessDetail.as_view()),
