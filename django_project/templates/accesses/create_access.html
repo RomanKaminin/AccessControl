@@ -10,8 +10,8 @@
                     <a class="btn btn-primary-send float-l rates__btn">Получить новый доступ</a>
 
                 </div><!-- .title-bar -->
-                <div class="content-box padding" style="box-shadow: 0 0 20px #e7e7e7;background-color: #fff;box-sizing: border-box;margin: 7px 0 30px;">
-                    <form class="form-horizontal" role="form" action="{% url 'new-access' %}" id="access-form" method="POST">
+                <div class="content-box padding" id="access-form">
+                    <form class="form-horizontal" role="form" action="{% url 'new-access' %}"  method="POST">
                       {% csrf_token %}
                         <div class="input-wrap ">
                             <label for="username">Ваше Имя</label>

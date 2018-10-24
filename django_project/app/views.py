@@ -1,6 +1,6 @@
 from django.views.generic.base import TemplateView
 from .forms import UserRegistrationForm, UserLoginForm
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import auth_logout
 from django.contrib.auth.decorators import login_required
@@ -51,3 +51,6 @@ def logout_user(request):
     auth_logout(request)
     return HttpResponseRedirect('/')
 
+def access_detail(request, pk):
+    access = get_object_or_404(AccessRequest, pk=pk)
+    return render(request, 'accesses/edit_access.html', {'access': access})

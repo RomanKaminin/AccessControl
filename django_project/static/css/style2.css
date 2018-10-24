@@ -254,6 +254,10 @@ background: linear-gradient(-45deg, transparent 315px, rgba(255, 255, 255) 0) ri
 }
 input[type="text"]{
     border-color: gray;
-
-
+}
+#access-form{
+    box-shadow: 0 0 20px #e7e7e7;
+    background-color: #fff;
+    box-sizing: border-box;
+    margin: 7px 0 30px;
 }
