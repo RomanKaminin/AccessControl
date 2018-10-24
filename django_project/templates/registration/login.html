@@ -1,10 +1,11 @@
 {% extends "home.html" %}
 {% load static %}
-
+    <script src="{% static "js/script.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
 {% block content %}
     <div id="login" style="animation-name: fade-in;animation-duration: 2s; width: 27%;">
     <h1>Войти</h1>
-        <form class="form-horizontal" name="LoginForm" action="{% url 'login' %}" method="post">
+        <form class="form-horizontal" role="form" action="{% url 'login' %}" id="login-form" method="POST">
         {% csrf_token %}
             {% if next %}
                 <input type="hidden" name="next" value="{{ next }}" />
@@ -20,20 +21,35 @@
                     <button type="submit" class="btn btn-primary btn--font-weight">Войти</button>
                 </div>
             </div>
-        <div style="position: fixed; text-align: center; width: 27%">
-        {% if form.non_field_errors %}
-            <div class='form-errors'>
-                {% for error in form.non_field_errors %}
-                    <p id="msg-error">{{ error }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
+        <div id="form-errors" style="position: fixed; text-align: center; width: 27%">
+            <p>{{error}}</p>
         </div>
         </form>
     <div style="position: fixed; text-align: center; width: 27%">
         <p style="font-size: 15px;margin-top: 130px; ">Ещё не зарегистрированы?<a href="{% url 'registration' %}" class="regLink" tabindex="5">Регистрация</a></p>
     </div>
-
     </div>
 
+    <script type="text/javascript">
+        $('#login-form').submit(function () {
+            $("#form-errors").val('');
+            var url = "{{ request.get_full_path }}";
+            $.ajax({
+                data: $(this).serialize(),
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                dataType: 'html',
+                success: function () {
+                    document.location.href = url.replace('login/', 'accesses/');
+                },
+                error: function (data) {
+                    console.log('!!');
+                    console.log(data);
+                    $("#form-errors").html(JSON.parse(data.responseText)['form']['__all__'][0]);
+                }
+            });
+            return false;
+        });
+
+    </script>
 {% endblock %}

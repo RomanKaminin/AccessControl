@@ -6,8 +6,7 @@
 {% block content %}
     <div id="registration" style="animation-name: fade-in;animation-duration: 2s; width: 27%;">
     <h1>Регистрация</h1>
-{#        <form class="form-horizontal" id="registration-form" name="RegistrationForm" action="{% url 'api-registration' %}" method="post">#}
-        <form class="form-horizontal" role="form" action="{% url 'registration' %}" id="myregistration-form" method="POST">
+        <form class="form-horizontal" role="form" action="{% url 'registration' %}" id="registration-form" method="POST">
             {% csrf_token %}
             {% if next %}
                 <input type="hidden" name="next" value="{{ next }}" />
@@ -26,17 +25,8 @@
                     <button type="submit" class="btn btn-primary btn--font-weight">Зарегистрироваться</button>
                 </div>
             </div>
-            <div style="position: fixed; text-align: center; width: 27%">
-                <div id="form-errors">
-                    <p>{{error}}</p>
-                </div>
-{#                {% if form.non_field_errors %}#}
-{#                    <div class='form-errors'>#}
-{#                        {% for error in form.non_field_errors %}#}
-{#                            <p>{{ error }}</p>#}
-{#                        {% endfor %}#}
-{#                    </div>#}
-{#                {% endif %}#}
+            <div id="form-errors" style="position: fixed; text-align: center; width: 27%">
+                <p>{{error}}</p>
             </div>
         </form>
         <div style="position: fixed; text-align: center; width:  27%">
@@ -44,8 +34,7 @@
         </div>
     </div>
     <script type="text/javascript">
-
-        $('#myregistration-form').submit(function () {
+        $('#registration-form').submit(function () {
             $("#form-errors").val('');
             var url = "{{ request.get_full_path }}";
             $.ajax({

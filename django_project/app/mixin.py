@@ -6,15 +6,14 @@ from django.contrib.auth.views import auth_login
 from django.contrib.auth import authenticate, login
 
 
-class AjaxFormMixin(object):
+class AjaxRegistrationMixin(object):
 
     def form_invalid(self, form):
-        response = super(AjaxFormMixin, self).form_invalid(form)
         if self.request.is_ajax():
             response_data = {"form": form.errors }
             return JsonResponse(response_data, status=400)
         else:
-            return response
+            return super(AjaxRegistrationMixin, self).form_invalid(form)
 
     def form_valid(self, form):
         validated_data = form.clean()
@@ -32,9 +31,26 @@ class AjaxFormMixin(object):
         login(self.request, user_auth)
         auth_login(self.request, user_auth)
 
-        response = super(AjaxFormMixin, self).form_valid(form)
         if self.request.is_ajax():
             response_data = {"form": 'ok'}
             return JsonResponse(response_data, status=200)
         else:
-            return response
+            return super(AjaxRegistrationMixin, self).form_valid(form)
+
+class AjaxLoginMixin(object):
+
+    def form_invalid(self, form):
+        if self.request.is_ajax():
+            response_data = {"form": form.errors }
+            return JsonResponse(response_data, status=400)
+        else:
+            return super(AjaxLoginMixin, self).form_invalid(form)
+
+    def form_valid(self, form):
+        user = form.login(self.request)
+        login(self.request, user)
+        if self.request.is_ajax():
+            response_data = {"form": 'ok'}
+            return JsonResponse(response_data, status=200)
+        else:
+            return super(AjaxLoginMixin, self).form_valid(form)

@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from app.views import HomePageView, get_accesses, \
-     logout_user, login_user, add_access, RegisterView
+     logout_user, LoginView, add_access, RegisterView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/', include('app.api.urls')),
     url(r'^$', HomePageView.as_view(),name='home'),
-    url(r'^login/$', login_user, name='login'),
+    url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout$', logout_user, name='logout'),
     url(r'^accesses/$', get_accesses, name='accesses'),
     url(r'^accesses/new_access$', add_access, name='new-access'),
