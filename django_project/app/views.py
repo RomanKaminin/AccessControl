@@ -17,12 +17,23 @@ class HomePageView(TemplateView):
 
 @login_required
 def add_access(request):
+    if request.POST:
+        name = request.POST['username']
+        space_name = request.POST['space_name']
+        AccessRequest.objects.create(name=name, space_name=space_name)
+        return HttpResponseRedirect('/accesses')
     return render(request, 'accesses/create_access.html', {})
 
 @login_required
 def get_accesses(request):
-    user_accesses = AccessRequest.objects.filter(name=request.user.username)
-    return render(request, 'accesses/accesses.html', {'accesses' : user_accesses})
+    list_groups = []
+    for g in request.user.groups.all():
+        list_groups.append(g.name)
+    if 'managers' in list_groups:
+        accesses = AccessRequest.objects.all()
+    else:
+        accesses = AccessRequest.objects.filter(name=request.user.username)
+    return render(request, 'accesses/accesses.html', {'accesses' : accesses})
 
 
 class RegisterView(AjaxRegistrationMixin, FormView):

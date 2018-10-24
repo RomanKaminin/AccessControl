@@ -11,27 +11,21 @@
 
                 </div><!-- .title-bar -->
                 <div class="content-box padding">
-
-                    <form action="{{ request.path }}" class="form-dark form-small" method="post"
-                          enctype="multipart/form-data" >
+                    <form class="form-horizontal" role="form" action="{% url 'new-access' %}" id="access-form" method="POST">
                       {% csrf_token %}
                         <div class="input-wrap ">
-                            <label for="base_rate">Имя</label>
-                            <input class="form-control" name="base_rate" placeholder="0.01" type="text" required>
+                            <label for="username">Ваше Имя</label>
+                            <input style="color: black;" class="form-control" name="username" value="{{ request.user }}" type="text" readonly>
                         </div>
                         <div class="input-wrap ">
-                            <label for="effective_dt">Дата</label>
-                            <input type="text" id="calendar" placeholder="DD/MM/YYYY" name="effective_dt" required />
+                            <label for="space_name">Цель вашего запроса</label>
+                            <input style="color: black;" type="text" name="space_name" required />
                         </div>
                         <div class="submit-wrap">
-                            <button class="btn btn-green">Submit</button>
+                            <button class="btn btn-primary btn--font-weight">Отправить</button>
                         </div>
                         <div style="text-align: center">
-{#                            {% if errors %}#}
-{#                                    <div class="row">#}
-{#                                        <a style="color: red"> {% raw errors %}</a>#}
-{#                                    </div>#}
-{#                            {% end %}#}
+
                         </div>
                     </form>
                 </div><!-- .content-box -->

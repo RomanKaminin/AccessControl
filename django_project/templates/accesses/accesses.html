@@ -33,7 +33,7 @@
                                                     <li>{{ access.name }}</li>
                                                     <li>{{ access.space_name }}</li>
                                                     <li>{{ access.access }}</li>
-                                                    <li>{{ access.date }}</li>
+                                                    <li>{{ access.date|date:"d M Y" }}</li>
                                                 </ul>
                                             </div>
                                         {% endfor %}
