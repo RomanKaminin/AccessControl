@@ -20,7 +20,9 @@ html,body {
 }
 
 .menu-container {
-  background-color: #11123c;
+  /*background-color: #11123c;*/
+
+  background-color: #1b073a;
   color: white;
   width: 12%;
   max-width: 15em;
@@ -249,4 +251,9 @@ background: linear-gradient(-45deg, transparent 315px, rgba(255, 255, 255) 0) ri
 }
 .admin-datalist-page .table .row ul {
     font-size: initial;
+}
+input[type="text"]{
+    border-color: gray;
+
+
 }

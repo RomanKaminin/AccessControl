@@ -20,7 +20,8 @@ html,body {
 }
 
 .menu-container {
-  background-color: #11123c;
+  /*background-color: #11123c;*/
+  background-color: #1b073a;
   color: white;
   width: 12%;
   max-width: 15em;
