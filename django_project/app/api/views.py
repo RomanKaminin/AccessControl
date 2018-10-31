@@ -63,26 +63,21 @@ class AccessDetail(APIView):
         """
         Подтверждение или отказ заявки (может только админ).
         """
-        if request.method == 'PUT':
-            user = self.get_object(pk)
-            serializer = StatusAccessSerializer(user, data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            return Response({'detail': "You are have not permission"})
+        user = self.get_object(pk)
+        serializer = StatusAccessSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     def delete(self, request, pk, format=None):
         """
         Удаление заявки.
         """
-        if request.method == 'DELETE':
-            user = self.get_object(pk)
-            user.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        else:
-            return Response({'detail': "You are have not permission"})
+        user = self.get_object(pk)
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CreateUserView(CreateAPIView):
     """

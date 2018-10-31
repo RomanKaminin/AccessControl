@@ -4,12 +4,11 @@
 <main class="main rates">
     <div class="container">
         <div class="admin-datalist-page">
-
             <div class="centred-content container-s" style="margin-top: -40px;">
                 <div class="row">
                     <a class="btn btn-primary-send float-l rates__btn">Заявка № {{ access.id }} </a>
-
-                </div><!-- .title-bar -->
+                    <a style="margin-right: 0px;" href="\accesses\" class="btn btn-primary float-r btn--font-weight">Назад</a>
+                </div>
                 <div class="content-box padding" style="box-shadow: 0 0 20px #e7e7e7;background-color: #fff;box-sizing: border-box;margin: 7px 0 30px;">
                     <form class="form-horizontal" role="form" action="{% url 'new-access' %}" id="edit-form" method="POST">
                       {% csrf_token %}
@@ -23,20 +22,14 @@
                         </div>
                         <div class="input-wrap ">
                             <label for="access">Текущий доступ</label>
-                            <input style="color: black; border-color: grey;" class="form-control" name="access" value="{{ access.access }}" type="text" >
+                            <input style="color: black; border-color: grey;" class="form-control" readonly name="access" value="{{ access.access }}" type="text" >
                         </div>
                         <div class="input-wrap ">
                             <label for="space_name">Цель вашего запроса</label>
-                            <input style="color: black; border-color: grey;" type="text" readonly name="space_name" value="{{ access.space_name }}" />
-                        </div>
-                        <div class="submit-wrap">
-                            <button class="btn btn-primary btn--font-weight">Отправить</button>
-                        </div>
-                        <div style="text-align: center">
-
+                            <input style="color: black; border-color: grey;" type="text" readonly readonly name="space_name" value="{{ access.space_name }}" />
                         </div>
                     </form>
-                </div><!-- .content-box -->
+                </div>
             </div>
         </div>
     </div>

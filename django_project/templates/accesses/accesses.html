@@ -11,7 +11,6 @@
                 <div class="view-buttons" style="margin-top: 0px;">
                     <a class="btn btn-primary-send float-l rates__btn">Ваши доступы</a>
                     <a style="margin-right: 0px;" href="{% url 'new-access' %}" class="btn btn-primary float-r btn--font-weight">Получить доступ</a>
-
                 </div>
                 <div class="table" style="min-height: 400px;">
                     <div class="row header">
@@ -23,21 +22,20 @@
                             <li><a href="#0">Дата запроса</a></li>
                         </ul>
                     </div>
-
-
                     <div id="tableRows">
-{% for access in accesses %}
-                                            <div class="row">
-                                                <ul>
-                                                    <li>{{ access.id }}</li>
-                                                    <li>{{ access.name }}</li>
-                                                    <li>{{ access.space_name }}</li>
-                                                    <li>{{ access.access }}</li>
-                                                    <li>{{ access.date|date:"d M Y" }}</li>
-                                                     <a href="/accesses/access/{{ access.id }}/">edit</a>
-                                                </ul>
-                                            </div>
-                                        {% endfor %}
+                        {% for access in accesses %}
+                            <div class="row">
+                            <a href="/accesses/access/{{ access.id }}/"  class="row">
+                                <ul>
+                                    <li>{{ access.id }}</li>
+                                    <li>{{ access.name }}</li>
+                                    <li>{{ access.space_name }}</li>
+                                    <li>{{ access.access }}</li>
+                                    <li>{{ access.date|date:"d M Y" }}</li>
+                                </ul>
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
