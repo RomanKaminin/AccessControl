@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from app.models import AccessRequest
 from django.views.generic.edit import FormView
 from .mixin import AjaxRegistrationMixin, AjaxLoginMixin
+from django.views.generic import ListView
+from app.helpers import paginator_work
 
 class HomePageView(TemplateView):
     template_name = "start.html"
@@ -24,16 +26,31 @@ def add_access(request):
         return HttpResponseRedirect('/accesses')
     return render(request, 'accesses/create_access.html', {})
 
-@login_required
-def get_accesses(request):
-    list_groups = []
-    for g in request.user.groups.all():
-        list_groups.append(g.name)
-    if 'managers' in list_groups:
-        accesses = AccessRequest.objects.all()
-    else:
-        accesses = AccessRequest.objects.filter(name=request.user.username)
-    return render(request, 'accesses/accesses.html', {'accesses' : accesses})
+class AccessesList(ListView):
+    template_name = "accesses/accesses.html"
+    model = AccessRequest
+
+    def get_context_data(self, **kwargs):
+        qs = self.model.objects.all()
+        if qs.exists():
+            list_groups = []
+            for g in self.request.user.groups.all():
+                list_groups.append(g.name)
+            if 'managers' in list_groups:
+                qs = self.model.objects.all()
+            else:
+                qs = self.model.objects.filter(name=self.request.user.username)
+            paginator = paginator_work(self.request, qs, 1)
+            params = self.request.GET.copy()
+            if 'page' in params:
+                del params['page']
+            context = {
+                'paginator': paginator['paginator'],
+                'accesses': paginator['page_objects'],
+            }
+        else:
+            context = {}
+        return context
 
 
 class RegisterView(AjaxRegistrationMixin, FormView):
@@ -46,11 +63,15 @@ class LoginView(AjaxLoginMixin, FormView):
     template_name = 'registration/login.html'
     success_url = '/accesses/'
 
-
 def logout_user(request):
     auth_logout(request)
     return HttpResponseRedirect('/')
 
-def access_detail(request, pk):
-    access = get_object_or_404(AccessRequest, pk=pk)
-    return render(request, 'accesses/edit_access.html', {'access': access})
+class AccessDetail(ListView):
+    context_object_name = 'access'
+    template_name = 'accesses/edit_access.html'
+
+    def get_queryset(self):
+        self.access = get_object_or_404(AccessRequest, id=self.kwargs['pk'])
+        return self.access
+

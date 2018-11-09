@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from app.views import HomePageView, get_accesses, \
+from app.views import HomePageView, AccessesList, \
      logout_user, LoginView, add_access, RegisterView, \
-    access_detail
+     AccessDetail
 
 
 urlpatterns = [
@@ -27,8 +27,8 @@ urlpatterns = [
     url(r'^$', HomePageView.as_view(),name='home'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout$', logout_user, name='logout'),
-    url(r'^accesses/$', get_accesses, name='accesses'),
+    url(r'^accesses/$', AccessesList.as_view(), name='accesses'),
     url(r'^accesses/new_access$', add_access, name='new-access'),
     url(r'^registration/$', RegisterView.as_view(), name='registration'),
-    url(r'^accesses/access/(?P<pk>\d+)/$', access_detail, name='access-detail'),
+    url(r'^accesses/access/(?P<pk>\d+)/$', AccessDetail.as_view(), name='access-detail'),
 ]
