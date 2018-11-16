@@ -1,80 +1,61 @@
 {% extends "base.html" %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/main.min.css' %}">
-    {% block content %}
-<div class="main" style="margin-top: 10px;">
-    <div class="container" style="animation-name: fade-in;animation-duration: 2s;">
-      <div class="row admin-content">
-            <main class="main rates">
-        <div class="container">
-            <div class="admin-datalist-page">
-                <div class="view-buttons" style="margin-top: 0px;">
-                    <a class="btn btn-primary-send float-l rates__btn">Ваши доступы</a>
-                    <a style="margin-right: 0px;" href="{% url 'new-access' %}" class="btn btn-primary float-r btn--font-weight">Получить доступ</a>
-                </div>
-                <div class="table" style="min-height: 400px;">
-                    <div class="row header">
-                        <ul>
-                            <li><a href="#0">№</a></li>
-                            <li><a href="#0">Имя клиента</a></li>
-                            <li><a href="#0">Цель запроса</a></li>
-                            <li><a href="#0">Текущий доступ</a></li>
-                            <li><a href="#0">Дата запроса</a></li>
-                        </ul>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% block content %}
+    <div class="main" style="margin-top: 10px;">
+        <div class="container" style="animation-name: fade-in;animation-duration: 2s;">
+          <div class="row admin-content">
+                <main class="main rates">
+            <div class="container">
+                <div class="admin-datalist-page">
+                    <div class="view-buttons" style="margin-top: 0px;">
+                        <a class="btn btn-primary-send float-l rates__btn">Ваши доступы</a>
+                        <a style="margin-right: 0px;" href="{% url 'new-access' %}" class="btn btn-primary float-r btn--font-weight">Получить доступ</a>
                     </div>
-                    <div id="tableRows">
-                        {% for access in accesses %}
-                            <div class="row">
-                            <a href="/accesses/access/{{ access.id }}/"  class="row">
-                                <ul>
-                                    <li>{{ access.id }}</li>
-                                    <li>{{ access.name }}</li>
-                                    <li>{{ access.space_name }}</li>
-                                    <li>{{ access.access }}</li>
-                                    <li>{{ access.date|date:"d M Y" }}</li>
-                                </ul>
-                                </a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                 <div class="table-footer">
-                       <div class="pagination">
-
-
-                            <ul class=pagination-list>
-                              {% if page_objects.has_previous %}
-                                <li>
-                                  <a href="{{ page_objects.previous_page_number }}" class="btn btn-gray prev-btn"><</a>
-                                </li>
-                              {% endif %}
-                              {% for i in paginator.page_range%}
-                                {% if page_objects.number == i %}
-                                <li>
-                                      <a class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
-                                  {% else %}
-                                      <a class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
-                                  {% endif %}
-                                  </li>
-                              {% endfor %}
-                              {% if page_objects.has_next %}
-                                <li>
-                                  <a href="{{ page_objects.next_page_number }}" class="btn btn-gray next-btn">></a>
-                                </li>
-                              {% endif %}
+                    <div class="table" style="min-height: 400px;">
+                        <div class="row header">
+                            <ul>
+                                <li><a href="#0">№</a></li>
+                                <li><a href="#0">Имя клиента</a></li>
+                                <li><a href="#0">Цель запроса</a></li>
+                                <li><a href="#0">Текущий доступ</a></li>
+                                <li><a href="#0">Дата запроса</a></li>
                             </ul>
-
-
-                       </div><!-- .pagination -->
-                 </div>
-
-
-
+                        </div>
+                        <div id="tableRows">
+                            {% for access in accesses %}
+                                <div class="row">
+                                <a href="/accesses/access/{{ access.id }}/"  class="row">
+                                    <ul>
+                                        <li>{{ access.id }}</li>
+                                        <li>{{ access.name }}</li>
+                                        <li>{{ access.space_name }}</li>
+                                        <li>{{ access.access }}</li>
+                                        <li>{{ access.date|date:"d M Y" }}</li>
+                                    </ul>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <nav class="text-right"  aria-label="">
+                            <ul class="pagination">
+                                {% if page_objects.has_previous %}
+                                <li class="disabled"><a href="?page={{ page_objects.previous_page_number }}&{{ params }}"><</a></li>
+                                {% endif %}
+                                {% for i in paginator.page_range %}
+                                <li {% if page_objects.number == i %} class="active" {% endif %}><a href="?page={{i}}&{{ params }}">{{i}}</a></li>
+                                {% endfor %}
+                                {% if page_objects.has_next %}
+                                <li><a href="?page={{ page_objects.next_page_number }}&{{ params }}">></a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-      </div><!-- .row -->
-    </div><!-- .container -->
-  </div><!-- .main -->
+        </main>
+          </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .main -->
 {% endblock %}
 
