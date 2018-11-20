@@ -72,3 +72,22 @@ class UserLoginForm(forms.Form):
         user_obj = User.objects.get(email=email)
         user = authenticate(username=user_obj.username, password=password)
         return user
+
+
+class CreateAccessForm(forms.Form):
+    username = forms.CharField(
+        required = True,
+        label = 'Username',
+        max_length = 32,
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Username'}
+        )
+    )
+    email = forms.CharField(
+        required = True,
+        label = 'Email',
+        max_length = 32,
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Email'}
+        )
+    )

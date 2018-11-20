@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="main rates">
+<main class="main">
     <div class="container">
         <div class="admin-datalist-page">
 
             <div class="centred-content container-s">
                 <div class="row">
-                    <a class="btn btn-primary-send float-l rates__btn">Получить новый доступ</a>
+                    <a class="btn btn-primary-send float-l ">Получить новый доступ</a>
                     <a style="margin-right: 0px;" href="\accesses\" class="btn btn-primary float-r btn--font-weight">Назад</a>
                 </div><!-- .title-bar -->
-                <div class="content-box padding" id="access-form">
+                <div class="content-box padding slow-view" id="access-form">
                     <form class="form-horizontal" role="form" action="{% url 'new-access' %}"  method="POST">
                       {% csrf_token %}
                         <div class="input-wrap ">

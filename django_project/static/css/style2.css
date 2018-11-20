@@ -96,7 +96,7 @@ html,body {
 }
 
 .menu li a{
-    font-size: 1.2rem;
+    font-size: 1.6rem;
 }
 
 .main {
@@ -260,4 +260,8 @@ input[type="text"]{
     background-color: #fff;
     box-sizing: border-box;
     margin: 7px 0 30px;
+}
+.slow-view{
+    animation-name: fade-in;
+    animation-duration: 2s;
 }
