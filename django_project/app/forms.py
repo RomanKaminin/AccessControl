@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from app.models import AccessRequest
 
 class UserRegistrationForm(forms.Form):
     username = forms.CharField(
@@ -74,20 +75,30 @@ class UserLoginForm(forms.Form):
         return user
 
 
-class CreateAccessForm(forms.Form):
-    username = forms.CharField(
+class CreateAccessForm(forms.ModelForm):
+    class Meta:
+        model = AccessRequest
+        fields = ['space_name']
+
+    space_name = forms.CharField(
         required = True,
-        label = 'Username',
+        label = 'Цель вашего запроса',
         max_length = 32,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Username'}
-        )
     )
-    email = forms.CharField(
+
+    def clean(self):
+        return self.cleaned_data
+
+class EditAccessForm(forms.ModelForm):
+    class Meta:
+        model = AccessRequest
+        fields = ['access']
+
+    access = forms.CharField(
         required = True,
-        label = 'Email',
+        label = 'Цель вашего запроса',
         max_length = 32,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Email'}
-        )
     )
+
+    def clean(self):
+        return self.cleaned_data

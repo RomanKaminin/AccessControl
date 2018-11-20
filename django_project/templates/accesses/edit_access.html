@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="main rates">
+<main class="main">
     <div class="container">
         <div class="admin-datalist-page">
             <div class="centred-content container-s" style="margin-top: -40px;">
                 <div class="row">
-                    <a class="btn btn-primary-send float-l rates__btn">Заявка № {{ access.id }} </a>
+                    <a class="btn btn-primary-send float-l ">Заявка № {{ access.id }} </a>
                     <a style="margin-right: 0px;" href="\accesses\" class="btn btn-primary float-r btn--font-weight">Назад</a>
                 </div>
                 <div class="content-box padding" style="box-shadow: 0 0 20px #e7e7e7;background-color: #fff;box-sizing: border-box;margin: 7px 0 30px;">
-                    <form class="form-horizontal" role="form" action="{% url 'new-access' %}" id="edit-form" method="POST">
+                    <form class="form-horizontal" role="form" action="{% url 'edit-access' pk=access.id%}" id="edit-form" method="POST">
                       {% csrf_token %}
                         <div class="input-wrap ">
                             <label for="date">Дата запроса</label>
@@ -21,12 +21,20 @@
                             <input style="color: black; border-color: grey;" class="form-control" readonly name="username" value="{{ access.name }}" type="text" >
                         </div>
                         <div class="input-wrap ">
-                            <label for="access">Текущий доступ</label>
-                            <input style="color: black; border-color: grey;" class="form-control" readonly name="access" value="{{ access.access }}" type="text" >
+                            <label for="space_name">Цель вашего запроса</label>
+                            <input style="color: black; border-color: grey;" type="text"  readonly name="space_name" value="{{ access.space_name }}" />
                         </div>
                         <div class="input-wrap ">
-                            <label for="space_name">Цель вашего запроса</label>
-                            <input style="color: black; border-color: grey;" type="text" readonly readonly name="space_name" value="{{ access.space_name }}" />
+                            <label for="access">Текущий доступ</label>
+                            <input style="color: black; border-color: grey;" class="form-control" name="access" value="{{ access.access }}" type="text" >
+{#                            <select name="access" style="color: black; border-color: grey;" >#}
+{#                                <option value="{{ access.access }}" selected="selected">{{ access.access }}</option>#}
+{#                                <option value="yes" >yes</option>#}
+{#                                <option value="no" >no</option>#}
+{#                            </select>#}
+                        </div>
+                        <div class="submit-wrap">
+                            <button type="submit" class="btn btn-primary btn--font-weight">Изменить</button>
                         </div>
                     </form>
                 </div>

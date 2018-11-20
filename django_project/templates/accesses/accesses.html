@@ -2,7 +2,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
     {% block content %}
-    <main class="main" style="margin-top: 30px;">
+    <main class="main slow-view" style="margin-top: 30px;">
         <div class="container">
             <div class="admin-datalist-page">
                 <div class="view-buttons" style="margin-top: 0px;">
@@ -58,11 +58,11 @@
                               {% for i in paginator.page_range%}
                                 {% if page_objects.number == i %}
                                 <li>
-                                      <a class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
+                                  <a class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
                                   {% else %}
-                                      <a class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
+                                  <a class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
                                   {% endif %}
-                                  </li>
+                                </li>
                               {% endfor %}
                               {% if page_objects.has_next %}
                                 <li>

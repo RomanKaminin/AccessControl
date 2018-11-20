@@ -14,10 +14,6 @@
                     <form class="form-horizontal" role="form" action="{% url 'new-access' %}"  method="POST">
                       {% csrf_token %}
                         <div class="input-wrap ">
-                            <label for="username">Ваше Имя</label>
-                            <input style="color: black; border-color: grey;" class="form-control" name="username" value="{{ request.user }}" type="text" readonly>
-                        </div>
-                        <div class="input-wrap ">
                             <label for="email">E-mail для уведомления</label>
                             <input style="color: black; border-color: grey;" class="form-control" name="email" value="{{ request.user.email }}" type="text" readonly>
                         </div>
@@ -26,7 +22,7 @@
                             <input style="color: black; border-color: grey;" type="text" name="space_name" required placeholder="Введите название офиса"/>
                         </div>
                         <div class="submit-wrap">
-                            <button class="btn btn-primary btn--font-weight">Отправить</button>
+                            <button type="submit" class="btn btn-primary btn--font-weight">Отправить</button>
                         </div>
                         <div style="text-align: center">
 

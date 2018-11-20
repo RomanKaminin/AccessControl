@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from app.views import (HomePageView, AccessesList,
-     logout_user, LoginView, RegisterView,
-     AccessDetail, AccessesCreate)
+                       logout_user, LoginView, RegisterView,
+                       AccessEdit, AccessesCreate)
 
 
 urlpatterns = [
@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^accesses/$', AccessesList.as_view(), name='accesses'),
     url(r'^accesses/new_access$', AccessesCreate.as_view(), name='new-access'),
     url(r'^registration/$', RegisterView.as_view(), name='registration'),
-    url(r'^accesses/access/(?P<pk>\d+)/$', AccessDetail.as_view(), name='access-detail'),
+    url(r'^accesses/access/(?P<pk>\d+)/$', AccessEdit.as_view(), name='edit-access'),
 ]
