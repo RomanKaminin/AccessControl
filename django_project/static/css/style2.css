@@ -265,3 +265,11 @@ input[type="text"]{
     animation-name: fade-in;
     animation-duration: 2s;
 }
+.sel{
+    font-size: 2rem;
+    font-weight: 100;
+    line-height: 20px;
+    padding: 30px 20px;
+    width: calc(100% - 42px);
+    visibility: visible;
+}
