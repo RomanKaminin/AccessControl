@@ -287,3 +287,13 @@ input[type="text"]{
 
 }
 
+.alph-filters {
+    font-weight: normal;
+    display: inline-flex;
+    justify-content: center;
+    margin: 25px 25px 25px 25px;
+    width: 100%;
+}
+.alph-filters a{
+    margin: 0px 25px 0px 25px;
+}

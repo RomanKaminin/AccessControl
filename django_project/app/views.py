@@ -140,7 +140,7 @@ class AlphaList(ListView):
             if 'number_records' in params:
                 number_records = params['number_records']
             else:
-                number_records = 3
+                number_records = 5
             paginator = paginator_work(self.request, qs.order_by('first_name'), number_records)
 
             context = {
