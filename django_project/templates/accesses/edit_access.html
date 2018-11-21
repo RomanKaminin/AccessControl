@@ -24,16 +24,14 @@
                             <label for="space_name">Цель вашего запроса</label>
                             <input style="color: black; border-color: grey;" type="text"  readonly name="space_name" value="{{ access.space_name }}" />
                         </div>
-
-                       <div class="input-wrap">
-                          <label>Текущий доступ</label>
-                          <select name="access" class="sel">
-                            <option value="{{ access.access }}" selected="selected" disabled>{{ access.access }}</option>
-                            <option value="empty">empty</option>
-                            <option value="yes">yes</option>
-                            <option value="no">no</option>
-
-                          </select>
+                        <div class="input-wrap">
+                            <label>Текущий доступ</label>
+                            <select name="access" class="sel">
+                                <option value="{{ access.access }}" selected="selected" disabled>{{ access.access }}</option>
+                                <option value="empty">empty</option>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                            </select>
                         </div><!-- .input-wrap -->
                         <div class="submit-wrap">
                             <button type="submit" class="btn btn-primary btn--font-weight">Изменить</button>
