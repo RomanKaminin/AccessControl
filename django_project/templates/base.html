@@ -22,7 +22,9 @@
     {% else %}
     <li><a href="{% url 'logout' %}">Выйти</a></li>
     <li><a href="{% url 'accesses' %}">Ваши доступы</a></li>
-{#    <li><a href="{% url 'accesses' %}">Алфавитный указатель</a></li>#}
+        {% ifequal user.groups.all.0.name "managers" %}
+    <li><a href="{% url 'alphabetical-index' %}">Алфавитный указатель</a></li>
+        {% endifequal %}
     {% endif %}
 
   </ul>

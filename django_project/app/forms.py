@@ -12,6 +12,22 @@ class UserRegistrationForm(forms.Form):
             attrs={'placeholder': 'Username'}
         )
     )
+    first_name = forms.CharField(
+        required = True,
+        label = 'First Name',
+        max_length = 32,
+        widget=forms.TextInput(
+            attrs={'placeholder': 'First Name'}
+        )
+    )
+    last_name = forms.CharField(
+        required = True,
+        label = 'Last Name',
+        max_length = 32,
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Last Name'}
+        )
+    )
     email = forms.CharField(
         required = True,
         label = 'Email',
@@ -30,9 +46,11 @@ class UserRegistrationForm(forms.Form):
     )
     def clean(self):
         username = self.cleaned_data.get('username')
+        first_name = self.cleaned_data.get('first_name')
+
         email = self.cleaned_data.get('email')
-        if User.objects.filter(username=username).exists():
-            raise forms.ValidationError("Sorry, that login already exist.")
+        if User.objects.filter(username=username,first_name=first_name).exists():
+            raise forms.ValidationError("Sorry, user with that username and first name already exist.")
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError("Sorry, that email already exist.")
         return self.cleaned_data

@@ -18,8 +18,10 @@ class AjaxRegistrationMixin(object):
     def form_valid(self, form):
         validated_data = form.clean()
         user = get_user_model().objects.create(
-          username=validated_data['username'],
-          email=validated_data['email']
+            username=validated_data['username'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
+            email=validated_data['email']
         )
         user.groups.add(Group.objects.get(name='clients'))
         user.set_password(validated_data['password'])

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+     <main class="main slow-view" style="margin-top: 30px;">
+            <div class="container" >
+                <div class="admin-datalist-page">
+                    <div class="view-buttons" >
+                        <a class="btn btn-primary-send float-l rates__btn">Алфавитный указатель</a>
+                        </div>
+                    <div class="row alph-filters">
+                        {% for item_filter in filters_alph %}
+                        <form action="" method="GET">
+                            <a class="btn btn-default" id="{{ item_filter }}" onclick="updateAlphItem(this.id)">{{ item_filter }}</a>
+                        </form>
+                        {% endfor %}
+                    </div>
+                    <div class="row ">
+                        <form action="" style="display: inline-flex;height: 45px;float: inline-start;" method="GET" >
+                            <p class="pag-select" style="width: 180px;" >Записей на странице:</p>
+                              <select id="pag_form" name="number_records">
+                                <option selected="selected" disabled>{{ page_objects|length }}</option>
+                                <option onclick="updatePagItem()">3</option>
+                                <option onclick="updatePagItem()">5</option>
+                                <option onclick="updatePagItem()">10</option>
+                              </select>
+                        </form>
+                    </div>
+                    <table class="table table-hover my-table">
+                      <thead class="thead-inverse">
+                        <tr>
+                          <th>Фамилия</th>
+                          <th>Имя</th>
+                          <th>Отчество</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                           {% for client in page_objects %}
+                               <tr>
+                                  <td class="col-md-2">{{ client.first_name }}</td>
+                                  <td class="col-md-2">{{ client.username }}</td>
+                                  <td class="col-md-2">{{ client.last_name }}</td>
+                               </tr>
+                          {% endfor %}
+                      </tbody>
+                    </table>
+                <div class="table-footer">
+                       <div class="pagination">
+                            <ul class=pagination-list>
+                              {% if page_objects.has_previous %}
+                                <li>
+                                  <a href="?page={{ page_objects.previous_page_number }}" class="btn btn-gray prev-btn"></a>
+                                </li>
+                              {% endif %}
+                              {% for i in paginator.page_range%}
+                                  {% if page_objects.number == i %}
+                                  <li style="float: inline-start;">
+                                  <a  class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
+                                  {% else %}
+                                  <a  class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
+                                  {% endif %}
+                                </li>
+                              {% endfor %}
+                              {% if page_objects.has_next %}
+                                <li>
+                                  <a href="?page={{ page_objects.next_page_number }}" class="btn btn-gray next-btn"></a>
+                                </li>
+                              {% endif %}
+                            </ul>
+                       </div><!-- .pagination -->
+                 </div>
+            </div>
+
+                </div>
+            </div>
+        </main>
+    <script  type="text/javascript">
+        function updatePagItem() {
+            var number_records = $("#pag_form").val();
+            var url = window.location.search;
+            document.location.href = '/alphabetical_index' + replaceQueryParam('number_records', number_records, url);
+        }
+        function updateAlphItem(alph_id) {
+            var url = window.location.search;
+            document.location.href = '/alphabetical_index' + replaceQueryParam('alph_val', alph_id, url);
+        }
+        function replaceQueryParam(param, newval, search) {
+            var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+            var query = search.replace(regex, "$1").replace(/&$/, '');
+            return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+        }
+    </script>
+{% endblock %}
+

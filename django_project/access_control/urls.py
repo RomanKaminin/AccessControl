@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from app.views import (HomePageView, AccessesList,
                        logout_user, LoginView, RegisterView,
-                       AccessEdit, AccessesCreate)
+                       AccessEdit, AccessesCreate, AlphaList)
 
 
 urlpatterns = [
@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^accesses/new_access$', AccessesCreate.as_view(), name='new-access'),
     url(r'^registration/$', RegisterView.as_view(), name='registration'),
     url(r'^accesses/access/(?P<pk>\d+)/$', AccessEdit.as_view(), name='edit-access'),
+    url(r'^alphabetical_index$', AlphaList.as_view(), name='alphabetical-index'),
 ]
