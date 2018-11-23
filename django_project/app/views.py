@@ -13,7 +13,8 @@ from django.contrib.auth.models import User
 from urllib.parse import urlencode
 from django.db.models import Q
 from django.conf import settings
-
+from django.core.mail import send_mail
+from app.email_templates import NewRequestTemplate
 
 class HomePageView(TemplateView):
     template_name = "start.html"
@@ -29,8 +30,18 @@ class AccessesCreate(CreateView):
 
     def form_valid(self, form):
         instance = form.save(commit=False)
+        #email_from_form
+        #object_from_form
         instance.name = self.request.user
         instance.save()
+
+        # message = (
+        #     NewRequestTemplate.subject,
+        #     NewRequestTemplate.message.format(instance.name,),#object_from_form
+        #     NewRequestTemplate.from_email,
+        #     # email_from_form
+        # )
+        # send_mail(message, fail_silently=False)
         return redirect(self.success_url)
 
 
