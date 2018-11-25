@@ -297,3 +297,13 @@ input[type="text"]{
 .alph-filters a{
     margin: 0px 25px 0px 25px;
 }
+
+#filter-form{
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 70px;
+}
+#filter-form p input{
+    color: black;
+    border-color: gray;
+}

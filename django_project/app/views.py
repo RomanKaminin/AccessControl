@@ -15,6 +15,8 @@ from django.db.models import Q
 from django.conf import settings
 from django.core.mail import send_mail
 from app.email_templates import NewRequestTemplate
+from app.filtersets import AccessFilter
+
 
 class HomePageView(TemplateView):
     template_name = "start.html"
@@ -48,10 +50,13 @@ class AccessesCreate(CreateView):
 class AccessesList(ListView):
     template_name = "accesses/accesses.html"
     model = AccessRequest
+    filter_class = AccessFilter
 
     def get_context_data(self, **kwargs):
         qs = self.model.objects.all()
         if qs.exists():
+            filtered = self.filter_class(self.request.GET, queryset=qs)
+
             params = self.request.GET.copy()
             if 'page' in params:
                 del params['page']
@@ -62,7 +67,8 @@ class AccessesList(ListView):
                 qs = self.model.objects.all()
             else:
                 qs = self.model.objects.filter(name=self.request.user.username)
-            paginator = paginator_work(self.request, qs.order_by('-date'), 3)
+            qs_with_filters = filtered.qs
+            paginator = paginator_work(self.request, qs_with_filters.order_by('-date'), 3)
             params = self.request.GET.copy()
             if 'page' in params:
                 del params['page']
@@ -70,6 +76,7 @@ class AccessesList(ListView):
                 'paginator': paginator['paginator'],
                 'page_objects': paginator['page_objects'],
                 'params': urlencode(params),
+                'filter': filtered,
             }
         else:
             context = {}

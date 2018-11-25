@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'app',
     'rest_framework_swagger',
     'raven.contrib.django.raven_compat',
+    'django_filters',
 ]
 SITE_ID = 1
 # LOGIN_REDIRECT_URL = '/rest/send_request'
