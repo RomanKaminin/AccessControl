@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/main.min.css' %}">
-    {% block content %}
+{% block content %}
     <main class="main slow-view" style="margin-top: 30px;">
         <div class="container">
             <div class="admin-datalist-page">
@@ -20,7 +18,7 @@
                         </ul>
                     </div>
                     <div id="tableRows">
-                        {% for access in accesses %}
+                        {% for access in page_objects %}
                             <div class="row">
                             {% ifequal user.groups.all.0.name "managers" %}
                             <a href="/accesses/access/{{ access.id }}/"  class="row">
@@ -47,31 +45,31 @@
                         {% endfor %}
                     </div>
                 </div>
-            <div class="table-footer">
-                       <div class="pagination">
-                            <ul class=pagination-list>
-                              {% if page_objects.has_previous %}
-                                <li>
-                                  <a href="{{ page_objects.previous_page_number }}" class="btn btn-gray prev-btn"></a>
-                                </li>
+                <div class="table-footer">
+                   <div class="pagination">
+                        <ul class=pagination-list>
+                          {% if page_objects.has_previous %}
+                            <li style="float: inline-start;">
+                              <a href="?page={{ page_objects.previous_page_number }}" class="btn btn-gray prev-btn"></a>
+                            </li>
+                          {% endif %}
+                          {% for i in paginator.page_range%}
+                              {% if page_objects.number == i %}
+                              <li style="float: inline-start;">
+                              <a  class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
+                              {% else %}
+                              <a  class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
                               {% endif %}
-                              {% for i in paginator.page_range%}
-                                {% if page_objects.number == i %}
-                                <li>
-                                  <a class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
-                                  {% else %}
-                                  <a class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
-                                  {% endif %}
-                                </li>
-                              {% endfor %}
-                              {% if page_objects.has_next %}
-                                <li>
-                                  <a href="?page={{ page_objects.next_page_number }}" class="btn btn-gray next-btn"></a>
-                                </li>
-                              {% endif %}
-                            </ul>
-                       </div><!-- .pagination -->
-                 </div>
+                            </li>
+                          {% endfor %}
+                          {% if page_objects.has_next %}
+                            <li>
+                              <a href="?page={{ page_objects.next_page_number }}" class="btn btn-gray next-btn"></a>
+                            </li>
+                          {% endif %}
+                        </ul>
+                   </div><!-- .pagination -->
+                </div>
             </div>
         </div>
     </main>

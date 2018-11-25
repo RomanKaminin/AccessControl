@@ -52,6 +52,9 @@ class AccessesList(ListView):
     def get_context_data(self, **kwargs):
         qs = self.model.objects.all()
         if qs.exists():
+            params = self.request.GET.copy()
+            if 'page' in params:
+                del params['page']
             list_groups = []
             for g in self.request.user.groups.all():
                 list_groups.append(g.name)
@@ -65,7 +68,8 @@ class AccessesList(ListView):
                 del params['page']
             context = {
                 'paginator': paginator['paginator'],
-                'accesses': paginator['page_objects'],
+                'page_objects': paginator['page_objects'],
+                'params': urlencode(params),
             }
         else:
             context = {}

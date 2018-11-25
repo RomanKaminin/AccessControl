@@ -42,33 +42,31 @@
                           {% endfor %}
                       </tbody>
                     </table>
-                <div class="table-footer">
-                       <div class="pagination">
-                            <ul class=pagination-list>
-                              {% if page_objects.has_previous %}
-                                <li>
-                                  <a href="?page={{ page_objects.previous_page_number }}" class="btn btn-gray prev-btn"></a>
-                                </li>
-                              {% endif %}
-                              {% for i in paginator.page_range%}
-                                  {% if page_objects.number == i %}
-                                  <li style="float: inline-start;">
-                                  <a  class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
-                                  {% else %}
-                                  <a  class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
+                    <div class="table-footer">
+                           <div class="pagination">
+                                <ul class=pagination-list>
+                                  {% if page_objects.has_previous %}
+                                    <li style="float: inline-start;">
+                                      <a href="?page={{ page_objects.previous_page_number }}" class="btn btn-gray prev-btn"></a>
+                                    </li>
                                   {% endif %}
-                                </li>
-                              {% endfor %}
-                              {% if page_objects.has_next %}
-                                <li>
-                                  <a href="?page={{ page_objects.next_page_number }}" class="btn btn-gray next-btn"></a>
-                                </li>
-                              {% endif %}
-                            </ul>
-                       </div><!-- .pagination -->
-                 </div>
-            </div>
-
+                                  {% for i in paginator.page_range%}
+                                      {% if page_objects.number == i %}
+                                      <li style="float: inline-start;">
+                                      <a  class="btn btn-primary" href="?page={{i}}&{{ params }}">{{i}}</a>
+                                      {% else %}
+                                      <a  class="btn btn-gray disabled" href="?page={{i}}&{{ params }}">{{i}}</a>
+                                      {% endif %}
+                                    </li>
+                                  {% endfor %}
+                                  {% if page_objects.has_next %}
+                                    <li>
+                                      <a href="?page={{ page_objects.next_page_number }}" class="btn btn-gray next-btn"></a>
+                                    </li>
+                                  {% endif %}
+                                </ul>
+                           </div><!-- .pagination -->
+                    </div>
                 </div>
             </div>
         </main>
