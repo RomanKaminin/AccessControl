@@ -9,9 +9,9 @@
                 </div>
             {% ifequal user.groups.all.0.name "managers" %}
             <div class="row">
-                <form class="search-input"  style="float: left;display: flex;/*! margin: auto 0; */width: 1110px;height: 50px;" id="filter-form" action="{% url 'accesses' %}" method="GET">
+                <form class="search-input"  style="display: flex; margin: 30px 0px 10px; " id="filter-form" action="{% url 'accesses' %}" method="GET">
                     {{ filter.form.as_p }}
-                    <button type="submit" class="btn btn-info btn-gray">Применить</button>
+                    <button type="submit" class="btn btn-info btn-gray-filter">Применить</button>
                 </form>
             </div>
             {% endifequal %}

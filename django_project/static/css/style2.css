@@ -304,6 +304,37 @@ input[type="text"]{
     margin-bottom: 70px;
 }
 #filter-form p input{
-    color: black;
-    border-color: gray;
+    color: #414040;
+    border-color: #d4d0d0;
+    height: 24px;
+    padding: 0px 0px;
+    width: calc(70% - 0px);
+    line-height: 0px;
+    margin: 0;
+}
+#filter-form p {
+    margin: auto;
+}
+.btn.btn-gray-filter {
+
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-clip: padding-box;
+    -webkit-box-shadow: inset 0 0 0 2px #e7e7e7;
+    -moz-box-shadow: inset 0 0 0 2px #e7e7e7;
+    -o-box-shadow: inset 0 0 0 2px #e7e7e7;
+    box-shadow: inset 0 0 0 2px #e7e7e7;
+    background-color: #e7e7e7;
+    color: #333;
+    height: 45px;
+    padding: 0px 15px;
+    margin: auto;
+
+}
+
+.btn-gray-filter:hover {
+
+    background-color: rgba(27, 7, 58, 0.02);
+    color: #989898;
+
 }
