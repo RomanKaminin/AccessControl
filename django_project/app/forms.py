@@ -96,11 +96,16 @@ class UserLoginForm(forms.Form):
 class CreateAccessForm(forms.ModelForm):
     class Meta:
         model = AccessRequest
-        fields = ['space_name']
+        fields = ['space_name','email']
 
     space_name = forms.CharField(
         required = True,
         label = 'Цель вашего запроса',
+        max_length = 32,
+    )
+    email = forms.CharField(
+        required = True,
+        label = 'Email',
         max_length = 32,
     )
 
@@ -110,11 +115,21 @@ class CreateAccessForm(forms.ModelForm):
 class EditAccessForm(forms.ModelForm):
     class Meta:
         model = AccessRequest
-        fields = ['access']
+        fields = ['access', 'username', 'space_name']
 
     access = forms.CharField(
         required = True,
-        label = 'Цель вашего запроса',
+        label = 'Цель запроса',
+        max_length = 32,
+    )
+    username = forms.CharField(
+        required = True,
+        label = 'Username',
+        max_length = 32,
+    )
+    space_name = forms.CharField(
+        required = True,
+        label = 'Цель запроса',
         max_length = 32,
     )
 

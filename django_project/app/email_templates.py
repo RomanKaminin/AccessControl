@@ -8,3 +8,7 @@ class BaseTemplate:
 class NewRequestTemplate(BaseTemplate):
     subject = 'Новый запрос на получение доступа'
     message = 'Клиент {} запросил доступ в {}'
+
+class CompleteRequestTemplate(BaseTemplate):
+    subject = 'Ваш запрос обработан'
+    message = 'Вам {} доступ в {}'

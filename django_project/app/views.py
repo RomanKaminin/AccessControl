@@ -14,7 +14,7 @@ from urllib.parse import urlencode
 from django.db.models import Q
 from django.conf import settings
 from django.core.mail import send_mail
-from app.email_templates import NewRequestTemplate
+from app.email_templates import NewRequestTemplate, CompleteRequestTemplate
 from app.filtersets import AccessFilter
 
 
@@ -32,18 +32,21 @@ class AccessesCreate(CreateView):
 
     def form_valid(self, form):
         instance = form.save(commit=False)
-        #email_from_form
-        #object_from_form
+        validated_data = form.clean()
+
+        user_instance = User.objects.get(email=validated_data['email'])
+        client = '{} {}'.format(user_instance.first_name, user_instance.username)
+        space_name = validated_data['space_name']
         instance.name = self.request.user
         instance.save()
 
-        # message = (
-        #     NewRequestTemplate.subject,
-        #     NewRequestTemplate.message.format(instance.name,),#object_from_form
-        #     NewRequestTemplate.from_email,
-        #     # email_from_form
-        # )
-        # send_mail(message, fail_silently=False)
+        send_mail(
+            NewRequestTemplate.subject,
+            NewRequestTemplate.message.format(client, space_name),
+            NewRequestTemplate.from_email,
+            [NewRequestTemplate.from_email, ],
+            fail_silently=False,
+        )
         return redirect(self.success_url)
 
 
@@ -102,6 +105,32 @@ class AccessEdit(UpdateView):
     form_class = EditAccessForm
     template_name = 'accesses/edit_access.html'
     success_url = '/accesses'
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        validated_data = form.clean()
+        space_name = validated_data['space_name']
+
+        user_instance = User.objects.get(username=validated_data['username'])
+
+        if validated_data['access'] == 'no':
+            access = "запрещён"
+        elif validated_data['access'] == 'yes':
+            access = "разрешён"
+        else:
+            access = "не обработан"
+
+        instance.save()
+
+        send_mail(
+            CompleteRequestTemplate.subject,
+            CompleteRequestTemplate.message.format(access, space_name),
+            CompleteRequestTemplate.from_email,
+            [user_instance.email, ],
+            fail_silently=False,
+        )
+        return redirect(self.success_url)
+
 
 class AlphaList(ListView):
     template_name = 'accesses/alpha_detail.html'
