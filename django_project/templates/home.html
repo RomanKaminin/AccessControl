@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,17 +18,33 @@
     </div>
     <ul class="menu">
     {% if not user.is_authenticated %}
-    <li><a href="{% url 'login' %}">Войти</a></li>
+    <li><a href="{% url 'login' %}">{% trans "Войти" %}</a></li>
     {% else %}
-    <li><a href="{% url 'logout' %}">Выйти</a></li>
-    <li><a href="{% url 'accesses' %}">Ваши доступы</a></li>
+    <li><a href="{% url 'logout' %}">{% trans "Выйти" %}</a></li>
+    <li><a href="{% url 'accesses' %}">{% trans "Доступы" %}</a></li>
         {% ifequal user.groups.all.0.name "managers" %}
-    <li><a href="{% url 'alphabetical-index' %}">Алфавитный указатель</a></li>
+    <li><a href="{% url 'alphabetical-index' %}">{% trans "Алфавитный указатель" %}</a></li>
         {% endifequal %}
     {% endif %}
 
   </ul>
+    <div class="row" style="margin-top: 300px;display: inline-block;">
+        <form style="isplay: inline-block;width: 61px;" class="lang-form" action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+          <input name="language" type="hidden" value="en" />
+          <input type="submit" class="btn btn-lang" value="EN" />
+        </form>
+
+        <form style="isplay: inline-block;width: 61px;"  class="lang-form" action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+          <input name="language" type="hidden" value="ru" />
+          <input type="submit" class="btn btn-lang" value="RU" />
+        </form>
+    </div>
 </nav>
+
 {% block content %}
 {% endblock %}
 

@@ -2,14 +2,15 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from app.models import AccessRequest
+from django.utils.translation import ugettext_lazy as _
 
 class UserRegistrationForm(forms.Form):
     username = forms.CharField(
         required = True,
-        label = 'Username',
+        label = _("Username"),
         max_length = 32,
         widget=forms.TextInput(
-            attrs={'placeholder': 'Username'}
+            attrs={'placeholder': _("Username")}
         )
     )
     first_name = forms.CharField(
@@ -17,7 +18,7 @@ class UserRegistrationForm(forms.Form):
         label = 'First Name',
         max_length = 32,
         widget=forms.TextInput(
-            attrs={'placeholder': 'First Name'}
+            attrs={'placeholder': _("First Name")}
         )
     )
     last_name = forms.CharField(
@@ -25,7 +26,7 @@ class UserRegistrationForm(forms.Form):
         label = 'Last Name',
         max_length = 32,
         widget=forms.TextInput(
-            attrs={'placeholder': 'Last Name'}
+            attrs={'placeholder': _("Last Name")}
         )
     )
     email = forms.CharField(
@@ -33,7 +34,7 @@ class UserRegistrationForm(forms.Form):
         label = 'Email',
         max_length = 32,
         widget=forms.TextInput(
-            attrs={'placeholder': 'Email'}
+            attrs={'placeholder': _("Email")}
         )
     )
     password = forms.CharField(
@@ -41,7 +42,7 @@ class UserRegistrationForm(forms.Form):
         label = 'Password',
         max_length = 32,
         widget = forms.PasswordInput(
-            attrs={'placeholder': 'Password'}
+            attrs={'placeholder': _("Password")}
         )
     )
     def clean(self):
@@ -50,9 +51,11 @@ class UserRegistrationForm(forms.Form):
 
         email = self.cleaned_data.get('email')
         if User.objects.filter(username=username,first_name=first_name).exists():
-            raise forms.ValidationError("Sorry, user with that username and first name already exist.")
+            raise forms.ValidationError(
+                _("Sorry, user with that username and first name already exist.")
+            )
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("Sorry, that email already exist.")
+            raise forms.ValidationError(_("Sorry, that email already exist."))
         return self.cleaned_data
 
 class UserLoginForm(forms.Form):
@@ -61,7 +64,7 @@ class UserLoginForm(forms.Form):
         label = 'Email',
         max_length = 32,
         widget=forms.TextInput(
-            attrs={'placeholder': 'Email'}
+            attrs={'placeholder': _("Email")}
         )
     )
     password = forms.CharField(
@@ -69,7 +72,7 @@ class UserLoginForm(forms.Form):
         label = 'Password',
         max_length = 32,
         widget=forms.PasswordInput(
-            attrs={'placeholder': 'Password'}
+            attrs={'placeholder': _("Password")}
         )
     )
     def clean(self):
@@ -78,11 +81,11 @@ class UserLoginForm(forms.Form):
         try:
             user = User.objects.get(email=email)
             if not user.check_password(password):
-                raise forms.ValidationError(u'Incorrect password.')
+                raise forms.ValidationError(_("Incorrect password."))
             elif not user.is_active:
-                raise forms.ValidationError(u'User with this e-mail is blocked.')
+                raise forms.ValidationError(_("User with this e-mail is blocked."))
         except User.DoesNotExist:
-            raise forms.ValidationError(u'User with this e-mail does not exist.')
+            raise forms.ValidationError(_("User with this e-mail does not exist."))
         return self.cleaned_data
 
     def login(self, request):
@@ -100,7 +103,7 @@ class CreateAccessForm(forms.ModelForm):
 
     space_name = forms.CharField(
         required = True,
-        label = 'Цель вашего запроса',
+        label = _("Purpose of request"),#Цель запроса
         max_length = 32,
     )
     email = forms.CharField(
@@ -119,17 +122,17 @@ class EditAccessForm(forms.ModelForm):
 
     access = forms.CharField(
         required = True,
-        label = 'Цель запроса',
+        label = _("Purpose of request"),#Цель запроса
         max_length = 32,
     )
     username = forms.CharField(
         required = True,
-        label = 'Username',
+        label = _("Username"),
         max_length = 32,
     )
     space_name = forms.CharField(
         required = True,
-        label = 'Цель запроса',
+        label = _("Purpose of request"),
         max_length = 32,
     )
 

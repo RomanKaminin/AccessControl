@@ -1,31 +1,31 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
 <main class="main">
     <div class="container">
         <div class="admin-datalist-page">
             <div class="centred-content container-s" style="margin-top: -40px;">
                 <div class="row">
-                    <a class="btn btn-primary-send float-l ">Заявка № {{ access.id }} </a>
-                    <a style="margin-right: 0px;" href="\accesses\" class="btn btn-primary float-r btn--font-weight">Назад</a>
+                    <a class="btn btn-primary-send float-l ">{% trans "Заявка №" %} {{ access.id }} </a>
+                    <a style="margin-right: 0px;" href="\accesses\" class="btn btn-primary float-r btn--font-weight">{% trans "Назад" %}</a>
                 </div>
                 <div class="content-box padding" style="box-shadow: 0 0 20px #e7e7e7;background-color: #fff;box-sizing: border-box;margin: 7px 0 30px;">
                     <form class="form-horizontal" role="form" action="{% url 'edit-access' pk=access.id%}" id="edit-form" method="POST">
                       {% csrf_token %}
                         <div class="input-wrap ">
-                            <label for="date">Дата запроса</label>
+                            <label for="date">{% trans "Дата запроса" %}</label>
                             <input style="color: black; border-color: grey;" class="form-control" readonly name="date" value="{{ access.date|date:"Y-M-d h:m"  }}" type="text" >
                         </div>
                         <div class="input-wrap ">
-                            <label for="username">Имя</label>
+                            <label for="username">{% trans "Имя" %}</label>
                             <input style="color: black; border-color: grey;" class="form-control" readonly name="username" value="{{ access.name }}" type="text" >
                         </div>
                         <div class="input-wrap ">
-                            <label for="space_name">Цель запроса</label>
+                            <label for="space_name">{% trans "Цель запроса" %}</label>
                             <input style="color: black; border-color: grey;" type="text"  readonly name="space_name" value="{{ access.space_name }}" />
                         </div>
                         <div class="input-wrap">
-                            <label>Текущий доступ</label>
+                            <label>{% trans "Текущий доступ" %}</label>
                             <select name="access" class="sel">
                                 <option value="{{ access.access }}" selected="selected" disabled>{{ access.access }}</option>
                                 <option value="empty">empty</option>
@@ -34,7 +34,7 @@
                             </select>
                         </div><!-- .input-wrap -->
                         <div class="submit-wrap">
-                            <button type="submit" class="btn btn-primary btn--font-weight">Изменить</button>
+                            <button type="submit" class="btn btn-primary btn--font-weight">{% trans "Изменить" %}</button>
                         </div>
                     </form>
                 </div>

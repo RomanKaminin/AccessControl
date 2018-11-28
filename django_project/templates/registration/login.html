@@ -1,10 +1,11 @@
 {% extends "home.html" %}
 {% load static %}
+{% load i18n %}
     <script src="{% static "js/script.js" %}"></script>
     <script src="{% static "js/jquery.min.js" %}"></script>
 {% block content %}
     <div id="login" style="animation-name: fade-in;animation-duration: 2s; width: 27%;">
-    <h1>Войти</h1>
+    <h1>{% trans "Войти" %}</h1>
         <form class="form-horizontal" role="form" action="{% url 'login' %}" id="login-form" method="POST">
         {% csrf_token %}
             {% if next %}
@@ -18,7 +19,7 @@
             </div>
             <div class="control-group">
                 <div class="controls" >
-                    <button type="submit" class="btn btn-primary btn--font-weight">Войти</button>
+                    <button type="submit" class="btn btn-primary btn--font-weight">{% trans "Войти" %}</button>
                 </div>
             </div>
         <div id="form-errors" style="position: fixed; text-align: center; width: 27%">
@@ -26,7 +27,7 @@
         </div>
         </form>
     <div style="position: fixed; text-align: center; width: 27%">
-        <p style="font-size: 15px;margin-top: 130px; ">Ещё не зарегистрированы?<a href="{% url 'registration' %}" class="regLink" tabindex="5">Регистрация</a></p>
+        <p style="font-size: 15px;margin-top: 130px; ">{% trans "Ещё не зарегистрированы?" %}<a href="{% url 'registration' %}" class="regLink" tabindex="5">{% trans "Регистрация" %}</a></p>
     </div>
     </div>
 

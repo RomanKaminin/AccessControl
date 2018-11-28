@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-28 14:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/forms.py:10 app/forms.py:13 app/forms.py:130
+msgid "Username"
+msgstr ""
+
+#: app/forms.py:21
+msgid "First Name"
+msgstr ""
+
+#: app/forms.py:29
+msgid "Last Name"
+msgstr ""
+
+#: app/forms.py:37 app/forms.py:67
+msgid "Email"
+msgstr ""
+
+#: app/forms.py:45 app/forms.py:75
+msgid "Password"
+msgstr ""
+
+#: app/forms.py:55
+msgid "Sorry, user with that username and first name already exist."
+msgstr ""
+
+#: app/forms.py:58
+msgid "Sorry, that email already exist."
+msgstr ""
+
+#: app/forms.py:84
+msgid "Incorrect password."
+msgstr ""
+
+#: app/forms.py:86
+msgid "User with this e-mail is blocked."
+msgstr ""
+
+#: app/forms.py:88
+msgid "User with this e-mail does not exist."
+msgstr ""
+
+#: app/forms.py:106 app/forms.py:125 app/forms.py:135
+msgid "Purpose of request"
+msgstr ""
+
+#: templates/accesses/accesses.html:8 templates/base.html:24
+#: templates/home.html:24
+msgid "Доступы"
+msgstr "Access List"
+
+#: templates/accesses/accesses.html:9
+msgid "Получить доступ"
+msgstr "Get access"
+
+#: templates/accesses/accesses.html:15
+msgid "Применить"
+msgstr "Apply"
+
+#: templates/accesses/accesses.html:23
+msgid "Имя клиента"
+msgstr "Client name"
+
+#: templates/accesses/accesses.html:24 templates/accesses/create_access.html:21
+#: templates/accesses/edit_access.html:24
+msgid "Цель запроса"
+msgstr "Purpose of request"
+
+#: templates/accesses/accesses.html:25 templates/accesses/edit_access.html:28
+msgid "Текущий доступ"
+msgstr "Current access"
+
+#: templates/accesses/accesses.html:26 templates/accesses/edit_access.html:16
+msgid "Дата запроса"
+msgstr "Request Date"
+
+#: templates/accesses/alpha_detail.html:8 templates/base.html:26
+#: templates/home.html:26
+msgid "Алфавитный указатель"
+msgstr "Alphabetical index"
+
+#: templates/accesses/alpha_detail.html:19
+msgid "Записей на странице:"
+msgstr "Records on page:"
+
+#: templates/accesses/alpha_detail.html:31
+msgid "Фамилия"
+msgstr "Surname"
+
+#: templates/accesses/alpha_detail.html:32
+#: templates/accesses/edit_access.html:20
+msgid "Имя"
+msgstr "Name"
+
+#: templates/accesses/alpha_detail.html:33
+msgid "Отчество"
+msgstr "Lastname"
+
+#: templates/accesses/create_access.html:10
+msgid "Получить новый доступ"
+msgstr "Get new access"
+
+#: templates/accesses/create_access.html:11
+#: templates/accesses/edit_access.html:10
+msgid "Назад"
+msgstr "Back"
+
+#: templates/accesses/create_access.html:17
+msgid "E-mail для уведомления"
+msgstr "E-mail notification"
+
+#: templates/accesses/create_access.html:25
+msgid "Отправить"
+msgstr "Send"
+
+#: templates/accesses/edit_access.html:9
+msgid "Заявка №"
+msgstr "Request №"
+
+#: templates/accesses/edit_access.html:37
+msgid "Изменить"
+msgstr "Change"
+
+#: templates/base.html:21 templates/home.html:21
+#: templates/registration/login.html:8 templates/registration/login.html:22
+#: templates/registration/registration.html:40
+msgid "Войти"
+msgstr "Login"
+
+#: templates/base.html:23 templates/home.html:23
+msgid "Выйти"
+msgstr "Logout"
+
+#: templates/registration/login.html:30
+msgid "Ещё не зарегистрированы?"
+msgstr "Still not registered?"
+
+#: templates/registration/login.html:30
+#: templates/registration/registration.html:9
+msgid "Регистрация"
+msgstr "Registration"
+
+#: templates/registration/registration.html:32
+msgid "Зарегистрироваться"
+msgstr "Register"
+
+#: templates/registration/registration.html:40
+msgid "Уже зарегистрированы?"
+msgstr "Already registered?"
+
+#: templates/start.html:8
+msgid ""
+"Система контроля доступа AccessControl даёт расширенные возможности вашим "
+"менеджерам для эффективного и удобного управления доступом персонала в "
+"конкретные помещения вашего офиса."
+msgstr ""
+"Access control system 'AccessControl' gives you advanced featuresmanagers to "
+"effectively and conveniently manage staff accessspecific premises of your "
+"office."
+
+#: templates/start.html:10
+msgid "Роман Каминин"
+msgstr "Roman Kaminin"

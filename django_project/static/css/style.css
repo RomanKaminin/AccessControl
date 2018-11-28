@@ -236,3 +236,42 @@ background: linear-gradient(-45deg, transparent 315px, rgba(255, 124, 7, 0.92) 0
 .control-group{
   margin-bottom: 10px;
 }
+
+.btn-lang {
+    font-weight: 700;
+    margin-left: 0px;
+    border-radius: 4px !important;
+    width: 25px;
+    height: 35px;
+    font-size: 16px;
+    background-image: none;
+    -webkit-transition: all ease-in-out 300ms;
+    background-color: rgba(255, 213, 97, 0);
+    outline: none;
+    color: white;
+    border-color: rgba(254, 190, 27, 0);
+    padding-right: 0px;
+    padding-left: 0px;
+    line-height: 0;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-left-width: 2px;
+}
+
+.btn-lang:hover {
+    background-color: #f9f8f4;
+    border-color: #f9f8f4;
+}
+
+.btn-lang:focus {
+    background-color: #f9f8f4;
+    border-color: #f9f8f4;
+    color: black;
+}
+
+.btn-lang:focus, .btn-lang:active:focus, .btn-lang.active:focus {
+    outline: none;
+    border-color: #f9f8f4;
+    background-color: #f9f8f4;
+}

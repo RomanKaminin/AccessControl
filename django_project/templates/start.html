@@ -1,12 +1,13 @@
 {% extends "home.html" %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 <section class="main">
   <article style="display: inline-block;">
     <h1>AccessControl</h1>
-    <p>Система контроля доступа AccessControl даёт расширеные возможности вашим менеджерам для эфективного и удобного управления доступом персонала в конкретные помещения вашего офиса.
+    <p>{% trans "Система контроля доступа AccessControl даёт расширенные возможности вашим менеджерам для эффективного и удобного управления доступом персонала в конкретные помещения вашего офиса." %}
     </p>
-    <p class="date" style="float: inline-end;">Roman Kaminin</p>
+    <p class="date" style="float: inline-end;">{% trans "Роман Каминин" %}</p>
   </article>
 </section>
 {% endblock %}

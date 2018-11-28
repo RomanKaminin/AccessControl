@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
      <main class="main slow-view" style="margin-top: 30px;">
             <div class="container" >
                 <div class="admin-datalist-page">
                     <div class="view-buttons" style="margin-top: 0px;">
-                        <a class="btn btn-primary-send float-l rates__btn">Алфавитный указатель</a>
+                        <a class="btn btn-primary-send float-l rates__btn">{% trans "Алфавитный указатель" %}</a>
                         </div>
                     <div class="row alph-filters">
                         {% for item_filter in filters_alph %}
@@ -15,7 +16,7 @@
                     </div>
                     <div class="row ">
                         <form action="" style="display: inline-flex;height: 45px;float: inline-start;" method="GET" >
-                            <p class="pag-select" style="width: 180px;" >Записей на странице:</p>
+                            <p class="pag-select" style="width: 180px;" >{% trans "Записей на странице:" %}</p>
                               <select id="pag_form" name="number_records">
                                 <option selected="selected" disabled>{{ page_objects|length }}</option>
                                 <option onclick="updatePagItem()">3</option>
@@ -27,9 +28,9 @@
                     <table class="table table-hover my-table">
                       <thead class="thead-inverse">
                         <tr>
-                          <th>Фамилия</th>
-                          <th>Имя</th>
-                          <th>Отчество</th>
+                          <th>{% trans "Фамилия" %}</th>
+                          <th>{% trans "Имя" %}</th>
+                          <th>{% trans "Отчество" %}</th>
                         </tr>
                       </thead>
                       <tbody>

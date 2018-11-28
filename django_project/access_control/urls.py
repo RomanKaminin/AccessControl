@@ -32,4 +32,5 @@ urlpatterns = [
     url(r'^registration/$', RegisterView.as_view(), name='registration'),
     url(r'^accesses/access/(?P<pk>\d+)/$', AccessEdit.as_view(), name='edit-access'),
     url(r'^alphabetical_index$', AlphaList.as_view(), name='alphabetical-index'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
