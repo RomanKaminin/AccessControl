@@ -28,19 +28,19 @@
     {% endif %}
 
   </ul>
-    <div class="row" style="margin-top: 300px;display: inline-block;">
-        <form style="isplay: inline-block;width: 61px;" class="lang-form" action="{% url 'set_language' %}" method="post">
+    <div class="row" style="bottom: 40px;position: absolute;width: 180px;display: inline-block;">
+        <form class="lang-form" action="{% url 'set_language' %}" method="post">
           {% csrf_token %}
           <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
           <input name="language" type="hidden" value="en" />
-          <input type="submit" class="btn btn-lang" value="EN" />
+          <input type="submit" class="btn-newlang btn-lang" value="EN" />
         </form>
 
-        <form style="isplay: inline-block;width: 61px;"  class="lang-form" action="{% url 'set_language' %}" method="post">
+        <form  class="lang-form" action="{% url 'set_language' %}" method="post">
           {% csrf_token %}
           <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
           <input name="language" type="hidden" value="ru" />
-          <input type="submit" class="btn btn-lang" value="RU" />
+          <input type="submit" class="btn-newlang  btn-lang" value="RU" />
         </form>
     </div>
 </nav>
