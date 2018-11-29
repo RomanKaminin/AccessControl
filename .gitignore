@@ -9,3 +9,5 @@ node_modules/
 /django_project/venv/
 !/docker-compose.yml
 /django_project/debug.log
+/django_project/locale/en/LC_MESSAGES/django.mo
+/django_project/locale/ru/LC_MESSAGES/django.mo
