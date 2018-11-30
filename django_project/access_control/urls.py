@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from django.contrib.auth import views as auth_views
 from app.views import (HomePageView, AccessesList,
                        logout_user, LoginView, RegisterView,
                        AccessEdit, AccessesCreate, AlphaList)
@@ -33,4 +34,16 @@ urlpatterns = [
     url(r'^accesses/access/(?P<pk>\d+)/$', AccessEdit.as_view(), name='edit-access'),
     url(r'^alphabetical_index$', AlphaList.as_view(), name='alphabetical-index'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+
+    url(r'^user/password/reset/$', auth_views.PasswordResetView.as_view(),
+        {'post_reset_redirect' : '/user/password/reset/done/'},
+        name="password_reset"),
+    url(r'^user/password/reset/done/$', auth_views.PasswordResetDoneView.as_view(),
+        name="password_reset_done"),
+    url(r'^user/password/reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+        auth_views.PasswordResetConfirmView.as_view(),
+        {'post_reset_redirect' : '/user/password/done/'},
+        name="auth_password_reset_confirm"),
+    url(r'^user/password/done/$', auth_views.PasswordResetCompleteView.as_view(),
+        name="password_reset_complete"),
 ]
