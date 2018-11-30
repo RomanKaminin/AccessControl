@@ -45,8 +45,6 @@
                     document.location.href = url.replace('login/', 'accesses/');
                 },
                 error: function (data) {
-                    console.log('!!');
-                    console.log(data);
                     $("#form-errors").html(JSON.parse(data.responseText)['form']['__all__'][0]);
                 }
             });

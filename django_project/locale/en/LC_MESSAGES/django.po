@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-28 14:19+0000\n"
+"POT-Creation-Date: 2018-11-30 14:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,6 +157,114 @@ msgstr "Still not registered?"
 #: templates/registration/registration.html:9
 msgid "Регистрация"
 msgstr "Registration"
+
+#: templates/registration/login.html:31
+msgid "Забыли пароль?"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:12
+msgid "Ваш пароль был сброшен! Теперь вы можете "
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:13
+#, fuzzy
+#| msgid "Войти"
+msgid "войти"
+msgstr "Login"
+
+#: templates/registration/password_reset_confirm.html:14
+msgid "Пожалуйста дважды введите новый пароль."
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:21
+msgid "Новый пароль:"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:27
+msgid "Подтвердите пароль:"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:33
+#, fuzzy
+#| msgid "Изменить"
+msgid "Изменить пароль"
+msgstr "Change"
+
+#: templates/registration/password_reset_confirm.html:42
+msgid "Неудачный сброс пароля"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:43
+msgid "Ссылка на сброс пароля недействительна,"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:44
+msgid "возможно, потому, что она уже использованна."
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:45
+msgid "Пожалуйста, запросите новый сброс пароля."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:10
+msgid ""
+"Мы отправили вам по электронной почте инструкции по настройке пароля на "
+"указанный вами адрес электронной почты."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:12
+msgid "Вы должны получить его в ближайшее время."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:15
+msgid "На главную"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:3
+msgid "Здравствуйте, "
+msgstr ""
+
+#: templates/registration/password_reset_email.html:5
+#, python-format
+msgid ""
+"\n"
+"\n"
+"Вы получили это письмо потому, что вы (либо кто-то, выдающий себя за вас) "
+"попросили выслать новый\n"
+"пароль к вашей учётной записи на сайте %(domain)s.  Если вы не просили "
+"выслать пароль, то не обращайте внимания на это письмо.\n"
+"\n"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:12
+msgid ""
+"\n"
+"Чтобы сбросить пароль, пожалуйста, нажмите на следующую ссылку, или "
+"скопируйте и вставьте ее\n"
+"в ваш веб-браузер:\n"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:19
+msgid "Ваше имя пользователя, в случае, если вы забыли:"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:22
+msgid "Best regards"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:23
+msgid "Management"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:11
+msgid ""
+"Пожалуйста, укажите свой адрес электронной почты, чтобы получить инструкции "
+"по его сбросу."
+msgstr ""
+
+#: templates/registration/password_reset_form.html:18
+msgid "Сбросить пароль"
+msgstr ""
 
 #: templates/registration/registration.html:32
 msgid "Зарегистрироваться"
