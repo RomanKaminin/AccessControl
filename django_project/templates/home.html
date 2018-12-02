@@ -28,6 +28,7 @@
     {% endif %}
 
   </ul>
+    {% if request.path == '/' %}
     <div class="row" style="bottom: 40px;position: absolute;width: 180px;display: inline-block;">
         <form class="lang-form" action="{% url 'set_language' %}" method="post">
           {% csrf_token %}
@@ -43,6 +44,7 @@
           <input type="submit" class="btn-newlang  btn-lang" value="RU" />
         </form>
     </div>
+{% endif %}
 </nav>
 
 {% block content %}

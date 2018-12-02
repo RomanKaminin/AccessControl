@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-30 14:52+0000\n"
+"POT-Creation-Date: 2018-12-02 14:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: app/filtersets.py:13 templates/accesses/accesses.html:25
+#: templates/accesses/edit_access.html:28
+msgid "Текущий доступ"
+msgstr ""
+
+#: app/filtersets.py:14 templates/accesses/accesses.html:24
+#: templates/accesses/create_access.html:21
+#: templates/accesses/edit_access.html:24
+msgid "Цель запроса"
+msgstr ""
 
 #: app/forms.py:10 app/forms.py:13 app/forms.py:130
 msgid "Username"
@@ -81,15 +92,6 @@ msgstr ""
 msgid "Имя клиента"
 msgstr ""
 
-#: templates/accesses/accesses.html:24 templates/accesses/create_access.html:21
-#: templates/accesses/edit_access.html:24
-msgid "Цель запроса"
-msgstr ""
-
-#: templates/accesses/accesses.html:25 templates/accesses/edit_access.html:28
-msgid "Текущий доступ"
-msgstr ""
-
 #: templates/accesses/accesses.html:26 templates/accesses/edit_access.html:16
 msgid "Дата запроса"
 msgstr ""
@@ -129,6 +131,10 @@ msgstr ""
 msgid "E-mail для уведомления"
 msgstr ""
 
+#: templates/accesses/create_access.html:22
+msgid "Введите название офиса"
+msgstr ""
+
 #: templates/accesses/create_access.html:25
 msgid "Отправить"
 msgstr ""
@@ -164,57 +170,61 @@ msgstr ""
 msgid "Забыли пароль?"
 msgstr ""
 
-#: templates/registration/password_reset_complete.html:12
+#: templates/registration/password_reset_complete.html:10
 msgid "Ваш пароль был сброшен! Теперь вы можете "
 msgstr ""
 
-#: templates/registration/password_reset_complete.html:13
+#: templates/registration/password_reset_complete.html:11
 msgid "войти"
 msgstr ""
 
-#: templates/registration/password_reset_confirm.html:14
+#: templates/registration/password_reset_complete.html:12
+msgid "в систему."
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:11
 msgid "Пожалуйста дважды введите новый пароль."
 msgstr ""
 
-#: templates/registration/password_reset_confirm.html:21
+#: templates/registration/password_reset_confirm.html:17
 msgid "Новый пароль:"
 msgstr ""
 
-#: templates/registration/password_reset_confirm.html:27
+#: templates/registration/password_reset_confirm.html:22
 msgid "Подтвердите пароль:"
 msgstr ""
 
-#: templates/registration/password_reset_confirm.html:33
+#: templates/registration/password_reset_confirm.html:28
 msgid "Изменить пароль"
 msgstr ""
 
-#: templates/registration/password_reset_confirm.html:42
+#: templates/registration/password_reset_confirm.html:33
 msgid "Неудачный сброс пароля"
 msgstr ""
 
-#: templates/registration/password_reset_confirm.html:43
+#: templates/registration/password_reset_confirm.html:34
 msgid "Ссылка на сброс пароля недействительна,"
 msgstr ""
 
-#: templates/registration/password_reset_confirm.html:44
+#: templates/registration/password_reset_confirm.html:35
 msgid "возможно, потому, что она уже использованна."
 msgstr ""
 
-#: templates/registration/password_reset_confirm.html:45
+#: templates/registration/password_reset_confirm.html:36
 msgid "Пожалуйста, запросите новый сброс пароля."
 msgstr ""
 
-#: templates/registration/password_reset_done.html:10
+#: templates/registration/password_reset_done.html:9
 msgid ""
 "Мы отправили вам по электронной почте инструкции по настройке пароля на "
 "указанный вами адрес электронной почты."
 msgstr ""
 
-#: templates/registration/password_reset_done.html:12
+#: templates/registration/password_reset_done.html:10
 msgid "Вы должны получить его в ближайшее время."
 msgstr ""
 
-#: templates/registration/password_reset_done.html:15
+#: templates/registration/password_reset_done.html:13
 msgid "На главную"
 msgstr ""
 
@@ -254,13 +264,13 @@ msgstr ""
 msgid "Management"
 msgstr ""
 
-#: templates/registration/password_reset_form.html:11
+#: templates/registration/password_reset_form.html:10
 msgid ""
 "Пожалуйста, укажите свой адрес электронной почты, чтобы получить инструкции "
 "по его сбросу."
 msgstr ""
 
-#: templates/registration/password_reset_form.html:18
+#: templates/registration/password_reset_form.html:17
 msgid "Сбросить пароль"
 msgstr ""
 
@@ -282,3 +292,6 @@ msgstr ""
 #: templates/start.html:10
 msgid "Роман Каминин"
 msgstr ""
+
+#~ msgid "Enter office name"
+#~ msgstr "Введите название офиса"

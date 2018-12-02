@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-30 14:52+0000\n"
+"POT-Creation-Date: 2018-12-02 14:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/filtersets.py:13 templates/accesses/accesses.html:25
+#: templates/accesses/edit_access.html:28
+msgid "Текущий доступ"
+msgstr "Current access"
+
+#: app/filtersets.py:14 templates/accesses/accesses.html:24
+#: templates/accesses/create_access.html:21
+#: templates/accesses/edit_access.html:24
+msgid "Цель запроса"
+msgstr "Purpose of request"
 
 #: app/forms.py:10 app/forms.py:13 app/forms.py:130
 msgid "Username"
@@ -79,15 +90,6 @@ msgstr "Apply"
 msgid "Имя клиента"
 msgstr "Client name"
 
-#: templates/accesses/accesses.html:24 templates/accesses/create_access.html:21
-#: templates/accesses/edit_access.html:24
-msgid "Цель запроса"
-msgstr "Purpose of request"
-
-#: templates/accesses/accesses.html:25 templates/accesses/edit_access.html:28
-msgid "Текущий доступ"
-msgstr "Current access"
-
 #: templates/accesses/accesses.html:26 templates/accesses/edit_access.html:16
 msgid "Дата запроса"
 msgstr "Request Date"
@@ -127,6 +129,10 @@ msgstr "Back"
 msgid "E-mail для уведомления"
 msgstr "E-mail notification"
 
+#: templates/accesses/create_access.html:22
+msgid "Введите название офиса"
+msgstr "Enter office name"
+
 #: templates/accesses/create_access.html:25
 msgid "Отправить"
 msgstr "Send"
@@ -160,69 +166,71 @@ msgstr "Registration"
 
 #: templates/registration/login.html:31
 msgid "Забыли пароль?"
-msgstr ""
+msgstr "Forgot your password?"
 
-#: templates/registration/password_reset_complete.html:12
+#: templates/registration/password_reset_complete.html:10
 msgid "Ваш пароль был сброшен! Теперь вы можете "
-msgstr ""
+msgstr "Your password has been reset! Now you can "
 
-#: templates/registration/password_reset_complete.html:13
-#, fuzzy
-#| msgid "Войти"
+#: templates/registration/password_reset_complete.html:11
 msgid "войти"
 msgstr "Login"
 
-#: templates/registration/password_reset_confirm.html:14
+#: templates/registration/password_reset_complete.html:12
+msgid "в систему."
+msgstr "into the system."
+
+#: templates/registration/password_reset_confirm.html:11
 msgid "Пожалуйста дважды введите новый пароль."
-msgstr ""
+msgstr "Please enter your new password twice."
 
-#: templates/registration/password_reset_confirm.html:21
+#: templates/registration/password_reset_confirm.html:17
 msgid "Новый пароль:"
-msgstr ""
+msgstr "New password:"
 
-#: templates/registration/password_reset_confirm.html:27
+#: templates/registration/password_reset_confirm.html:22
 msgid "Подтвердите пароль:"
-msgstr ""
+msgstr "Confirm password:"
+
+#: templates/registration/password_reset_confirm.html:28
+msgid "Изменить пароль"
+msgstr "Change password"
 
 #: templates/registration/password_reset_confirm.html:33
-#, fuzzy
-#| msgid "Изменить"
-msgid "Изменить пароль"
-msgstr "Change"
-
-#: templates/registration/password_reset_confirm.html:42
 msgid "Неудачный сброс пароля"
-msgstr ""
+msgstr "Password reset failed"
 
-#: templates/registration/password_reset_confirm.html:43
+#: templates/registration/password_reset_confirm.html:34
 msgid "Ссылка на сброс пароля недействительна,"
-msgstr ""
+msgstr "The link to reset the password is invalid,"
 
-#: templates/registration/password_reset_confirm.html:44
+#: templates/registration/password_reset_confirm.html:35
 msgid "возможно, потому, что она уже использованна."
-msgstr ""
+msgstr "perhaps because it is already used."
 
-#: templates/registration/password_reset_confirm.html:45
+#: templates/registration/password_reset_confirm.html:36
 msgid "Пожалуйста, запросите новый сброс пароля."
-msgstr ""
+msgstr "Please request a new password reset."
 
-#: templates/registration/password_reset_done.html:10
+#: templates/registration/password_reset_done.html:9
 msgid ""
 "Мы отправили вам по электронной почте инструкции по настройке пароля на "
 "указанный вами адрес электронной почты."
 msgstr ""
+"We've e-mailed you instructions for setting your password to the e-mail "
+"address you submitted."
 
-#: templates/registration/password_reset_done.html:12
+#: templates/registration/password_reset_done.html:10
 msgid "Вы должны получить его в ближайшее время."
-msgstr ""
+msgstr "You should be receiving it shortly."
 
-#: templates/registration/password_reset_done.html:15
+#: templates/registration/password_reset_done.html:13
 msgid "На главную"
-msgstr ""
+msgstr "To main"
 
 #: templates/registration/password_reset_email.html:3
 msgid "Здравствуйте, "
-msgstr ""
+msgstr "Hello, "
 
 #: templates/registration/password_reset_email.html:5
 #, python-format
@@ -256,15 +264,16 @@ msgstr ""
 msgid "Management"
 msgstr ""
 
-#: templates/registration/password_reset_form.html:11
+#: templates/registration/password_reset_form.html:10
 msgid ""
 "Пожалуйста, укажите свой адрес электронной почты, чтобы получить инструкции "
 "по его сбросу."
 msgstr ""
+"Please specify your email address to receive instructions for resetting it."
 
-#: templates/registration/password_reset_form.html:18
+#: templates/registration/password_reset_form.html:17
 msgid "Сбросить пароль"
-msgstr ""
+msgstr "Reset the password"
 
 #: templates/registration/registration.html:32
 msgid "Зарегистрироваться"
@@ -280,9 +289,8 @@ msgid ""
 "менеджерам для эффективного и удобного управления доступом персонала в "
 "конкретные помещения вашего офиса."
 msgstr ""
-"Access control system 'AccessControl' gives you advanced featuresmanagers to "
-"effectively and conveniently manage staff accessspecific premises of your "
-"office."
+"AccessControl system gives you advanced featuresmanagers to effectively and "
+"conveniently manage staff accessspecific premises of your office."
 
 #: templates/start.html:10
 msgid "Роман Каминин"

@@ -103,7 +103,7 @@ class CreateAccessForm(forms.ModelForm):
 
     space_name = forms.CharField(
         required = True,
-        label = _("Purpose of request"),#Цель запроса
+        label = _("Purpose of request"),
         max_length = 32,
     )
     email = forms.CharField(
