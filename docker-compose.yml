@@ -15,7 +15,7 @@ services:
     restart: always
     command: 'bash -c "python3 manage.py migrate && python3 ./manage.py migrate app &&
           python3 ./manage.py makemigrations app && python3 ./manage.py loaddata test_data.json &&
-          python3 manage.py runserver 0.0.0.0:8000 && python3 manage.py compilemessages"'
+          python3 ./manage.py compilemessages && python3 manage.py runserver 0.0.0.0:8000"'
     build:
       dockerfile: "Dockerfile"
       context: "./django_project"

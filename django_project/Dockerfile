@@ -5,6 +5,7 @@ FROM python:3.5-slim
 
 # Install some necessary things.
 RUN apt-get update && apt-get install -y curl
+RUN apt-get install -y gettext libgettextpo-dev
 
 # Install our requirements.
 WORKDIR /root/src/
