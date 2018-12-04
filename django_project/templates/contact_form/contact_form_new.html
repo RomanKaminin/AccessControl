@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div id="login" style="animation-name: fade-in;animation-duration: 2s; width: 27%;margin-top: 0px;">
+        <h1>{% trans "Обратная связь" %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions" style="margin-bottom: 10px;">
+              <button class="primaryAction btn btn-primary" type="submit">Send</button>
+            </div>
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+            <div class="g-recaptcha" data-sitekey="6Lccm34UAAAAALh19253b_F1jah46kLcDQBhN9J_"></div>
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}

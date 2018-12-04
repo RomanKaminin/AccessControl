@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
+from app.helpers import check_recaptcha
 from app.views import (HomePageView, AccessesList,
                        logout_user, LoginView, RegisterView,
-                       AccessEdit, AccessesCreate, AlphaList)
+                       AccessEdit, AccessesCreate, AlphaList,
+                       ContactFromMail, SentSuccess)
 
 
 urlpatterns = [
@@ -46,4 +48,7 @@ urlpatterns = [
         name="auth_password_reset_confirm"),
     url(r'^user/password/done/$', auth_views.PasswordResetCompleteView.as_view(),
         name="password_reset_complete"),
+
+    url(r'^contact/', check_recaptcha(ContactFromMail.as_view()), name='contact'),
+    url(r'^sent/', SentSuccess.as_view(), name='sent'),
 ]

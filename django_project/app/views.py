@@ -1,6 +1,5 @@
 from django.views.generic.base import TemplateView
 from .forms import UserRegistrationForm, UserLoginForm
-from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import auth_logout
 from app.models import AccessRequest
@@ -8,7 +7,7 @@ from django.views.generic.edit import FormView
 from .mixin import AjaxRegistrationMixin, AjaxLoginMixin
 from django.views.generic import ListView, UpdateView, CreateView
 from app.helpers import paginator_work
-from app.forms import CreateAccessForm, EditAccessForm
+from app.forms import CreateAccessForm, EditAccessForm, ContactForm
 from django.contrib.auth.models import User
 from urllib.parse import urlencode
 from django.db.models import Q
@@ -16,10 +15,17 @@ from django.conf import settings
 from django.core.mail import send_mail
 from app.email_templates import NewRequestTemplate, CompleteRequestTemplate
 from app.filtersets import AccessFilter
-
+from django.shortcuts import render, redirect
 
 class HomePageView(TemplateView):
     template_name = "start.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+class SentSuccess(TemplateView):
+    template_name = "contact_form/contact_form_sent.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -49,6 +55,19 @@ class AccessesCreate(CreateView):
         )
         return redirect(self.success_url)
 
+class ContactFromMail(FormView):
+    form_class = ContactForm
+    template_name = 'contact_form/contact_form_new.html'
+    success_url = '/sent'
+
+    def form_valid(self, form):
+        subject = form.cleaned_data['subject']
+        from_email = form.cleaned_data['from_email']
+        message = form.cleaned_data['message']
+        if self.request.recaptcha_is_valid:
+            send_mail(subject, message, from_email, ['acsescontrol@gmail.com'])
+            return redirect(self.success_url)
+        return render(self.request, self.template_name, self.get_context_data())
 
 class AccessesList(ListView):
     template_name = "accesses/accesses.html"

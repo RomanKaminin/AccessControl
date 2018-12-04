@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'raven.contrib.django.raven_compat',
     'django_filters',
+    'captcha',
 ]
 SITE_ID = 1
 # LOGIN_REDIRECT_URL = '/rest/send_request'
@@ -228,3 +229,6 @@ VALUES_ALPH = [u'А', u'Б', u'В', u'Г', u'Д', u'Е', u'Ё', u'Ж', u'З', u'
 FIXTURE_DIRS = (
    os.path.join(BASE_DIR, 'fixtures'),
 )
+# For contact form
+RECAPTCHA_PUBLIC_KEY = '6Lccm34UAAAAALh19253b_F1jah46kLcDQBhN9J_'
+RECAPTCHA_PRIVATE_KEY = '6Lccm34UAAAAAKhsaC7AUnT1A87g6B3UuUW7b28u'
