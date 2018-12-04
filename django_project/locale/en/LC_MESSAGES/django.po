@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-04 06:38+0000\n"
+"POT-Creation-Date: 2018-12-04 13:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,6 +73,10 @@ msgstr ""
 msgid "Purpose of request"
 msgstr ""
 
+#: app/helpers.py:40
+msgid "Invalid reCAPTCHA. Please try again."
+msgstr "Недопустимое значение reCAPTCHA. Пожалуйста, попробуйте еще раз."
+
 #: templates/accesses/accesses.html:8 templates/base.html:24
 #: templates/home.html:24
 msgid "Доступы"
@@ -134,6 +138,7 @@ msgid "Введите название офиса"
 msgstr "Enter office name"
 
 #: templates/accesses/create_access.html:25
+#: templates/contact_form/contact_form_new.html:12
 msgid "Отправить"
 msgstr "Send"
 
@@ -154,6 +159,21 @@ msgstr "Login"
 #: templates/base.html:23 templates/home.html:23
 msgid "Выйти"
 msgstr "Logout"
+
+#: templates/contact_form/contact_form_new.html:7
+msgid "Обратная связь"
+msgstr "Feedback"
+
+#: templates/contact_form/contact_form_sent.html:7
+#, fuzzy
+#| msgid "Вы должны получить его в ближайшее время."
+msgid "Спасибо! Мы получили ваш запрос и свяжемся с вами в ближайшее время."
+msgstr "You should be receiving it shortly."
+
+#: templates/contact_form/contact_form_sent.html:11
+#: templates/registration/password_reset_done.html:12
+msgid "На главную"
+msgstr "To main"
 
 #: templates/registration/login.html:30
 msgid "Ещё не зарегистрированы?"
@@ -223,10 +243,6 @@ msgstr ""
 #: templates/registration/password_reset_done.html:9
 msgid "Вы должны получить его в ближайшее время."
 msgstr "You should be receiving it shortly."
-
-#: templates/registration/password_reset_done.html:12
-msgid "На главную"
-msgstr "To main"
 
 #: templates/registration/password_reset_email.html:3
 msgid "Здравствуйте, "

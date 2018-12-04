@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, \
     PageNotAnInteger
 from django.conf import settings
 from django.contrib import messages
-
+from django.utils.translation import ugettext_lazy as _
 
 def paginator_work(request, list, num):
     paginator = Paginator(list, num)
@@ -37,7 +37,7 @@ def check_recaptcha(function):
                 request.recaptcha_is_valid = True
             else:
                 request.recaptcha_is_valid = False
-                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+                messages.error(request, _("Invalid reCAPTCHA. Please try again."))
         return function(request, *args, **kwargs)
 
     wrap.__doc__ = function.__doc__

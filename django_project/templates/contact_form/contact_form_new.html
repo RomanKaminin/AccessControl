@@ -9,15 +9,17 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-actions" style="margin-bottom: 10px;">
-              <button class="primaryAction btn btn-primary" type="submit">Send</button>
+              <button class="primaryAction btn btn-primary" type="submit">{% trans "Отправить" %}</button>
             </div>
-            <script src='https://www.google.com/recaptcha/api.js'></script>
-            <div class="g-recaptcha" data-sitekey="6Lccm34UAAAAALh19253b_F1jah46kLcDQBhN9J_"></div>
+        <div style="margin-bottom: 10px;">
             {% if messages %}
                 {% for message in messages %}
                     {{ message }}
                 {% endfor %}
             {% endif %}
+        </div>
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+            <div class="g-recaptcha" data-sitekey="6Lccm34UAAAAALh19253b_F1jah46kLcDQBhN9J_"></div>
         </form>
     </div>
 {% endblock %}
